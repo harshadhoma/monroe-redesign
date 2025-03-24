@@ -53,7 +53,7 @@ export default function FourHShowcase() {
 
       {/* Hero Section */}
       <div className="bg-purple-100 py-12 px-4 text-center">
-        <h1 className="text-4xl font-bold text-purple-800 mb-2">4-H Showcase</h1>
+        <h1 className="text-4xl font-bold text-purple-800 mb-2">4-H</h1>
         <p className="text-gray-700 max-w-2xl mx-auto mb-6">
           Honoring the creativity, dedication, and achievements of our youth across agriculture, art, science, and more.
         </p>
