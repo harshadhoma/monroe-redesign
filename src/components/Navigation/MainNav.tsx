@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MegaMenu } from './MegaMenu';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-
-
 
 const navigationItems = [
   {
@@ -16,7 +12,6 @@ const navigationItems = [
         links: [
           { text: "Annual Fair", href: "/" },
           { text: "Upcoming Events", href: "/events" },
-          // { text: "Competitions", href: "/" },
           { text: "Carnival & Entertainment", href: "/" },
         ]
       },
@@ -29,22 +24,11 @@ const navigationItems = [
           { text: "Demolition Derby", href: "/" },
         ]
       },
-      // {
-      //   section: "Entertainment",
-      //   links: [
-      //     // { text: "Live Music", href: "/" },
-      //     // { text: "Family Shows", href: "/" },
-      //     // { text: "Special Performances", href: "/" },
-      //     // { text: "Daily Schedule", href: "/" },
-      //   ]
-      // },
       {
         section: "Tickets",
         links: [
           { text: "Buy Tickets", href: "/tickets/calendar" },
-          // { text: "Pricing Options", href: "/" },
           { text: "Season Passes", href: "/" },
-          // { text: "VIP Packages", href: "/" },
         ]
       }
     ]
@@ -57,7 +41,6 @@ const navigationItems = [
         links: [
           { text: "Maps & Directions", href: "/" },
           { text: "Parking Information", href: "/" },
-          // { text: "Accessibility", href: "/" },
           { text: "Public Transportation", href: "/" },
         ]
       },
@@ -65,27 +48,14 @@ const navigationItems = [
         section: "At the Fair",
         links: [
           { text: "Food & Vendors", href: "/" },
-          // { text: "Shopping Guide", href: "/" },
-          // { text: "Amenities", href: "/" },
           { text: "First Aid", href: "/" },
         ]
       },
-      // {
-      //   section: "Accommodations",
-      //   links: [
-      //     // { text: "Partner Hotels", href: "/" },
-      //     // { text: "RV Camping", href: "/" },
-      //     // { text: "Group Services", href: "/" },
-      //     // { text: "Local Attractions", href: "/" },
-      //   ]
-      // },
       {
         section: "Resources",
         links: [
           { text: "FAQs", href: "/" },
           { text: "Fair Guide", href: "/" },
-          // { text: "Rules & Policies", href: "/" },
-          // { text: "Contact Support", href: "/" },
         ]
       }
     ]
@@ -98,7 +68,7 @@ const navigationItems = [
         links: [
           { text: "Become a Vendor", href: "/" },
           { text: "Vendor Portal", href: "/vendor/login" },
-          { text: "Visitor Portal", href: "/user/dashboard"},
+          { text: "Visitor Portal", href: "/user/dashboard" },
           { text: "Photo Gallery", href: "/upload" },
         ]
       },
@@ -107,8 +77,6 @@ const navigationItems = [
         links: [
           { text: "Opportunities", href: "/" },
           { text: "Current Sponsors", href: "/sponsor" },
-          // { text: "Benefits", href: "/" },
-          // { text: "Contact", href: "/" },
         ]
       },
       {
@@ -117,7 +85,6 @@ const navigationItems = [
           { text: "Volunteer", href: "/" },
           { text: "Job Opportunities", href: "/" },
           { text: "Donations", href: "/" },
-          // { text: "Support Programs", href: "/" },
         ]
       },
       {
@@ -126,7 +93,6 @@ const navigationItems = [
           { text: "4-H", href: "/4h" },
           { text: "Youth Development", href: "/" },
           { text: "Workshops", href: "/" },
-          // { text: "Resources", href: "/" },
         ]
       }
     ]
@@ -143,19 +109,10 @@ const navigationItems = [
           { text: "Staff Directory", href: "/" },
         ]
       },
-      // {
-      //   section: "News & Media",
-      //   links: [
-      //     // { text: "Press Releases", href: "/" },
-      //     // { text: "News Coverage", href: "/" },
-      //     // { text: "Media Kit", href: "/" },
-      //   ]
-      // },
       {
         section: "Contact",
         links: [
           { text: "General Inquiries", href: "/" },
-          // { text: "Department Contacts", href: "/" },
           { text: "Location", href: "/" },
           { text: "Hours", href: "/" },
         ]
@@ -176,16 +133,14 @@ const navigationItems = [
 export function MainNav() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  // const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     if (mobileOpen) {
-      document.body.style.overflow = 'hidden'; // disable scroll
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = ''; // re-enable scroll
+      document.body.style.overflow = '';
     }
-  
-    // Cleanup on unmount just in case
     return () => {
       document.body.style.overflow = '';
     };
@@ -234,18 +189,14 @@ export function MainNav() {
                       to={link.href}
                       onClick={() => {
                         setMobileOpen(false);
-
-                        // Always scroll to top after menu closes, even if same page
                         setTimeout(() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }, 100); // allow DOM to update first
+                        }, 100);
                       }}
                       className="text-gray-600 hover:text-purple-700 block"
                     >
                       {link.text}
                     </Link>
-
-
                   </li>
                 ))}
               </ul>
