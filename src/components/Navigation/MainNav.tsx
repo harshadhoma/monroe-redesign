@@ -12,7 +12,7 @@ const navigationItems = [
       {
         section: "Featured Events",
         links: [
-          // { text: "Annual Fair", href: "/" },
+          { text: "Annual Fair", href: "/" },
           { text: "Upcoming Events", href: "/events" },
           // { text: "Competitions", href: "/" },
           { text: "Carnival & Entertainment", href: "/" },
@@ -27,15 +27,15 @@ const navigationItems = [
           { text: "Demolition Derby", href: "/" },
         ]
       },
-      {
-        section: "Entertainment",
-        links: [
-          // { text: "Live Music", href: "/" },
-          // { text: "Family Shows", href: "/" },
-          // { text: "Special Performances", href: "/" },
-          // { text: "Daily Schedule", href: "/" },
-        ]
-      },
+      // {
+      //   section: "Entertainment",
+      //   links: [
+      //     // { text: "Live Music", href: "/" },
+      //     // { text: "Family Shows", href: "/" },
+      //     // { text: "Special Performances", href: "/" },
+      //     // { text: "Daily Schedule", href: "/" },
+      //   ]
+      // },
       {
         section: "Tickets",
         links: [
@@ -122,8 +122,8 @@ const navigationItems = [
         section: "Education",
         links: [
           { text: "4-H", href: "/4h" },
-          // { text: "Youth Development", href: "/" },
-          // { text: "Workshops", href: "/" },
+          { text: "Youth Development", href: "/" },
+          { text: "Workshops", href: "/" },
           // { text: "Resources", href: "/" },
         ]
       }
