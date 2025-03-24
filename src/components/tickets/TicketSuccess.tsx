@@ -3,13 +3,14 @@ import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 export default function TicketSuccess() {
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
-
+      {/* <TopBar />
+      <MainNav /> */}
+      < Header />
       <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

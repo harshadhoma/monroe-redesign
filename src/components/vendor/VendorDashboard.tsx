@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
+import { Header } from '../Navigation/HeaderComponent';
 
 const dummyEvents = [
   {
@@ -36,8 +37,9 @@ export const VendorDashboard = () => {
 
   return (
     <div className="min-h-screen bg-purple-50 overflow-x-hidden">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
       <div className="max-w-7xl mx-auto pt-8 pb-12 px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

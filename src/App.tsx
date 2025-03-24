@@ -7,14 +7,15 @@ import { ParallaxImage } from './components/ParallaxImage';
 import { AnimatedCard } from './components/AnimatedCard';
 import { EventCard } from './components/EventCard';
 import { Link } from 'react-router-dom';
+import { Header } from './components/Navigation/HeaderComponent';
 
 
 function App() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      <TopBar />
-      <MainNav />
-      
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
       {/* Hero Section - Enhanced with ParallaxImage */}
       {/* <div className="relative pt-20 h-screen"> */}
       <div className="relative h-[81vh] flex items-start">

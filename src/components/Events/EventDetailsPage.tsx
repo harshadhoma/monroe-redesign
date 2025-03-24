@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 const sampleEvents = [
   {
@@ -51,8 +52,9 @@ export default function EventDetailsPage() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-          <TopBar />
-          <MainNav />
+          {/* <TopBar />
+          <MainNav /> */}
+          < Header />
     <div className="min-h-screen bg-purple-50 px-4 py-12">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
         <img src={event.image} alt={event.title} className="w-full h-64 object-cover" />

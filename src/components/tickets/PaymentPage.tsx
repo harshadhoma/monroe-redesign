@@ -6,6 +6,7 @@ import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
 import { generateTicketPDF } from '../../utils/generateTicketPDF';
 import { motion } from 'framer-motion';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 
 
@@ -45,8 +46,9 @@ export default function Payment() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
 
       <div className="max-w-2xl mx-auto px-4 py-10">
         <h2 className="text-3xl font-bold text-purple-900 mb-6 text-center">Payment</h2>

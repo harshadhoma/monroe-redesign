@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 const sampleEvents = [
   {
@@ -37,8 +38,9 @@ const sampleEvents = [
 export default function EventsPage() {
   return (
     <div className="min-h-screen bg-purple-50">
-          <TopBar />
-          <MainNav />
+          {/* <TopBar />
+          <MainNav /> */}
+          < Header/>
     <div className="min-h-screen bg-purple-50 py-5 px-6">
       <h1 className="text-4xl font-bold text-purple-800 text-center mb-10">Upcoming Events</h1>
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
 import { motion } from 'framer-motion';
+import { Header } from '../Navigation/HeaderComponent';
 
 const steps = ['Exhibitor Info', 'Booth Selection', 'Extras', 'Payment & Terms', 'Review & Submit'];
 
@@ -107,8 +108,9 @@ export const VendorBookingForm = () => {
 if (submitted) {
     return (
       <div className="min-h-screen bg-purple-50">
-        <TopBar />
-        <MainNav />
+        {/* <TopBar />
+        <MainNav /> */}
+        <Header />
         <div className="max-w-xl mx-auto py-20 px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h2 className="text-3xl font-bold text-purple-800 mb-4">✅ Application Submitted!</h2>

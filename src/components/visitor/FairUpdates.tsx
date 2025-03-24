@@ -1,6 +1,7 @@
 import React from 'react';
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 const updates = [
   {
@@ -24,8 +25,9 @@ const updates = [
 export default function FairUpdates() {
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
       <div className="max-w-4xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-purple-800 mb-2 flex items-center gap-2">
           <span role="img" aria-label="megaphone">📢</span> Fair Updates

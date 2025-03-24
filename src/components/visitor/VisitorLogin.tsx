@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { motion } from 'framer-motion';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 const dummyUsers = [
     {
@@ -45,8 +46,9 @@ export default function VisitorLogin() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
       <div className="max-w-md mx-auto mt-8 p-8 bg-white rounded-xl shadow-lg">
         <motion.h2
           initial={{ opacity: 0, y: 10 }}

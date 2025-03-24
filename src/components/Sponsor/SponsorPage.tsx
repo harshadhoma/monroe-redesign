@@ -3,6 +3,7 @@ import React from 'react';
 
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 const featuredSponsors = [
   { name: "Toyota", src: "/sponsors/toyota.png" },
@@ -25,9 +26,9 @@ const allSponsors = [
 export default function SponsorsPage() {
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
-
+      {/* <TopBar />
+      <MainNav /> */}
+      < Header />
       <div className="max-w-6xl mx-auto py-5 px-4 text-center">
         <h2 className="text-4xl font-extrabold text-purple-800 mb-4">Our Valued Sponsors</h2>
         <p className="text-gray-600 mb-12">

@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { motion } from 'framer-motion';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 const eventsData = {
   'spring-carnival': {
@@ -55,8 +56,9 @@ export default function EventDetails() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      < Header />
       <div className="max-w-4xl mx-auto px-4 py-16">
         <img
           src={event.image}

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { motion } from 'framer-motion';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 interface Ticket {
   event: string;
@@ -38,8 +39,9 @@ export default function UserDashboard() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
 
       <div className="max-w-4xl mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-purple-800 mb-4">Welcome, {user.name}</h2>

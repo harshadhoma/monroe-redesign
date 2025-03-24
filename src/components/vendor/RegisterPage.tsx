@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 export const RegisterPage = () => {
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
       <div className="max-w-md mx-auto py-20 px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 

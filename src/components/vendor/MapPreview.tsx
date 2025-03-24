@@ -6,6 +6,7 @@ import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
 import { motion } from 'framer-motion';
 import fairMap from '../../images/monroefg.png';
+import { Header } from '../Navigation/HeaderComponent';
 
 export const MapPreview = () => {
   const { id } = useParams();
@@ -17,8 +18,9 @@ export const MapPreview = () => {
 
   return (
     <div className="min-h-screen bg-purple-50 overflow-x-hidden">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
 
       <div className="max-w-5xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <motion.h2

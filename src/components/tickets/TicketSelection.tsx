@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TopBar } from '../Navigation/TopBar';
 import { MainNav } from '../Navigation/MainNav';
+import { Header } from '../Navigation/HeaderComponent';
 
 const ticketOptions = [
   { label: 'Adult', description: 'Age 12+', price: 10 },
@@ -42,9 +43,9 @@ export default function TicketSelection() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
-
+      {/* <TopBar />
+      <MainNav /> */}
+    <Header />
       <div className="max-w-3xl mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold text-purple-800 text-center mb-8">Select Tickets</h2>
 

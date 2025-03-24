@@ -3,6 +3,8 @@ import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Header } from '../../components/Navigation/HeaderComponent';
+
 import img1 from '../../images/4h/1.jpg';
 import img2 from '../../images/4h/2.jpg';
 import img3 from '../../images/4h/3.jpg';
@@ -45,8 +47,9 @@ export default function FourHShowcase() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      < Header />
 
       {/* Hero Section */}
       <div className="bg-purple-100 py-12 px-4 text-center">

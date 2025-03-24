@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { Link } from 'react-router-dom';
+import { Header } from '../../components/Navigation/HeaderComponent';
 
 type EventType = {
   id: string;
@@ -118,8 +119,9 @@ export default function EventSchedule() {
 
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      < Header />
       <div className="max-w-6xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-purple-800 mb-2 flex items-center gap-2">
           <span role="img" aria-label="schedule">🎪</span> Event Schedule
