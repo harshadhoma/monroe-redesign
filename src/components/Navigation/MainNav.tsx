@@ -68,15 +68,15 @@ const navigationItems = [
           { text: "First Aid", href: "/" },
         ]
       },
-      {
-        section: "Accommodations",
-        links: [
-          // { text: "Partner Hotels", href: "/" },
-          // { text: "RV Camping", href: "/" },
-          // { text: "Group Services", href: "/" },
-          { text: "Local Attractions", href: "/" },
-        ]
-      },
+      // {
+      //   section: "Accommodations",
+      //   links: [
+      //     // { text: "Partner Hotels", href: "/" },
+      //     // { text: "RV Camping", href: "/" },
+      //     // { text: "Group Services", href: "/" },
+      //     // { text: "Local Attractions", href: "/" },
+      //   ]
+      // },
       {
         section: "Resources",
         links: [
