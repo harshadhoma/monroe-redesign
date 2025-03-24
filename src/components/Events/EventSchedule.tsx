@@ -32,7 +32,7 @@ const events: EventType[] = [
     time: '12:00 PM',
     location: 'Central Grounds',
     category: 'Food Festival',
-    image: 'https://source.unsplash.com/featured/?food-truck',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQACqVeydR6Pjm99kfhBvtM8M5gSndGs87DEA&s',
     description: 'A delicious gathering of the best food trucks in the county!',
   },
   {
@@ -52,7 +52,7 @@ const events: EventType[] = [
     time: '10:00 AM',
     location: 'Barn Pavilion',
     category: '4-H Expo',
-    image: 'https://source.unsplash.com/featured/?agriculture',
+    image: 'https://s3.amazonaws.com/assets.cce.cornell.edu/slides/65198/image/sized/Poultry1.JPG?1562771034',
     description: 'Local 4-H youth showcase their livestock and agricultural skills.',
   },
   {
@@ -62,17 +62,17 @@ const events: EventType[] = [
     time: '11:00 AM',
     location: 'Innovation Center',
     category: 'Technology',
-    image: 'https://source.unsplash.com/featured/?technology,expo',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTdjW6rTNY9ZjogaUVtB3xLoT-LMA5xciUFQ&s',
     description: 'Explore cutting-edge tech exhibits from local startups and makers.',
   },
   {
     id: 'art-bazaar',
-    title: 'Art & Craft Bazaar',
+    title: 'Art & Craft ',
     date: '2025-06-25',
     time: '1:00 PM',
     location: 'Hall B',
     category: 'Art & Craft',
-    image: 'https://source.unsplash.com/featured/?craft,fair',
+    image: 'https://shop4-h.org/cdn/shop/collections/19730923433_723971a4dd_w9.png?v=1693501447',
     description: 'Discover handmade art and crafts by local creators.',
   },
   // ... more events omitted for brevity, keep your original list
