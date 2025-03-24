@@ -178,7 +178,8 @@ export function MainNav() {
 
       {/* Mobile Nav Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white px-4 py-4 space-y-6 shadow-lg">
+        <div className="md:hidden bg-white px-4 py-4 space-y-6 shadow-lg"
+        style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', touchAction: 'auto' }}>
           {navigationItems.map((item) => (
             <div key={item.title}>
               <h3 className="text-purple-800 font-semibold mb-2">{item.title}</h3>
