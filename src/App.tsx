@@ -8,10 +8,23 @@ import { AnimatedCard } from './components/AnimatedCard';
 import { EventCard } from './components/EventCard';
 import { Link } from 'react-router-dom';
 import { Header } from './components/Navigation/HeaderComponent';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
+    <>
+    <ScrollToTop />
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* <TopBar />
       <MainNav /> */}
@@ -208,6 +221,7 @@ function App() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
 

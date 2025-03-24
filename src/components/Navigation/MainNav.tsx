@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MegaMenu } from './MegaMenu';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
+import { useLocation } from 'react-router-dom';
 
 
 const navigationItems = [
@@ -174,6 +174,7 @@ const navigationItems = [
 export function MainNav() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className="bg-white border-b">
