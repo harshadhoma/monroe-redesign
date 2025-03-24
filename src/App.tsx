@@ -6,7 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ParallaxImage } from './components/ParallaxImage';
 import { AnimatedCard } from './components/AnimatedCard';
 import { EventCard } from './components/EventCard';
-import { VendorBooking } from './components/VendorBooking';
+// import { VendorBooking } from '../components/vendor/VendorBooking';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -54,6 +56,7 @@ function App() {
               transition={{ duration: 0.8, delay: 1.2 }}
               className="flex space-x-6"
             >
+              <Link to="/tickets/calendar">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -61,13 +64,16 @@ function App() {
               >
                 Get Tickets
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition"
-              >
-                View Events
-              </motion.button>
+              </Link>
+              <Link to="/events">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition"
+                  >
+                    View Events
+                  </motion.button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -90,13 +96,13 @@ function App() {
               date="March 15, 2024"
               title="Spring Craft Fair"
               description="Join local artisans and crafters for a day of unique finds and creative inspiration."
-              imageUrl="https://images.unsplash.com/photo-1506484381205-6973a545f534?auto=format&fit=crop&w=800"
+              imageUrl="https://visitlitchfield.com/wp-content/uploads/2024/03/carnival-1.jpg"
             />
             <EventCard
               date="April 2, 2024"
               title="Agricultural Exhibition"
               description="Experience the best of local agriculture with demonstrations and shows."
-              imageUrl="https://images.unsplash.com/photo-1471967183322-1d21e9453376?auto=format&fit=crop&w=800"
+              imageUrl="https://wgxa.tv/resources/media2/16x9/3000/648/0x157/90/88001917-7e73-4116-b72b-38dfedbbcd0a-ganatlantiqueag2023tractorpulling101.jpg"
             />
             <EventCard
               date="April 20, 2024"

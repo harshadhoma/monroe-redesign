@@ -10,8 +10,8 @@ const navigationItems = [
       {
         section: "Featured Events",
         links: [
-          { text: "Annual Fair", href: "/" },
-          { text: "Upcoming Events", href: "/" },
+          // { text: "Annual Fair", href: "/" },
+          { text: "Upcoming Events", href: "/events" },
           { text: "Competitions", href: "/" },
           { text: "Carnival & Entertainment", href: "/" },
         ]
@@ -37,10 +37,10 @@ const navigationItems = [
       {
         section: "Tickets",
         links: [
-          { text: "Buy Tickets", href: "/tickets" },
+          { text: "Buy Tickets", href: "/tickets/calendar" },
           { text: "Pricing Options", href: "/" },
           { text: "Season Passes", href: "/" },
-          { text: "VIP Packages", href: "/" },
+          // { text: "VIP Packages", href: "/" },
         ]
       }
     ]
@@ -69,7 +69,7 @@ const navigationItems = [
       {
         section: "Accommodations",
         links: [
-          { text: "Partner Hotels", href: "/" },
+          // { text: "Partner Hotels", href: "/" },
           { text: "RV Camping", href: "/" },
           { text: "Group Services", href: "/" },
           { text: "Local Attractions", href: "/" },
@@ -90,12 +90,12 @@ const navigationItems = [
     title: "Get Involved",
     items: [
       {
-        section: "Vendors & Exhibitors",
+        section: "Vendors & Visitors",
         links: [
           { text: "Become a Vendor", href: "/" },
-          { text: "Application Process", href: "/" },
           { text: "Vendor Portal", href: "/vendor/login" },
-          { text: "Visitor Portal", href: "/user/dashboard"}
+          { text: "Visitor Portal", href: "/user/dashboard"},
+          { text: "Photo Gallery", href: "/upload" },
         ]
       },
       {
@@ -119,7 +119,7 @@ const navigationItems = [
       {
         section: "Education",
         links: [
-          { text: "School Programs", href: "/" },
+          { text: "4-H", href: "/4h" },
           { text: "Youth Development", href: "/" },
           { text: "Workshops", href: "/" },
           { text: "Resources", href: "/" },
@@ -144,7 +144,6 @@ const navigationItems = [
         links: [
           { text: "Press Releases", href: "/" },
           { text: "News Coverage", href: "/" },
-          { text: "Photo Gallery", href: "/" },
           { text: "Media Kit", href: "/" },
         ]
       },
@@ -152,7 +151,7 @@ const navigationItems = [
         section: "Contact",
         links: [
           { text: "General Inquiries", href: "/" },
-          { text: "Department Contacts", href: "/" },
+          // { text: "Department Contacts", href: "/" },
           { text: "Location", href: "/" },
           { text: "Hours", href: "/" },
         ]

@@ -16,7 +16,7 @@ export const LoginPage = () => {
     e.preventDefault();
 
     // Dummy credentials
-    const demoEmail = 'harsha@demo.com';
+    const demoEmail = 'vendor@demo.com';
     const demoPassword = '123456';
 
     if (email === demoEmail && password === demoPassword) {
@@ -73,6 +73,9 @@ export const LoginPage = () => {
             >
               Login
             </motion.button>
+            <p className="text-sm text-gray-500 text-center mt-2">
+              Use: <strong>vendor@demo.com</strong> / <strong>123456</strong>
+            </p>
           </form>
 
           <p className="text-sm text-center text-gray-500 mt-4">

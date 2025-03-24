@@ -1,6 +1,6 @@
 import React from 'react';
-import { TopBar } from '../../components/Navigation/TopBar';
-import { MainNav } from '../../components/Navigation/MainNav';
+import { TopBar } from '../Navigation/TopBar';
+import { MainNav } from '../Navigation/MainNav';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 

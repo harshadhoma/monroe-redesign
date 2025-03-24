@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TopBar } from '../../components/Navigation/TopBar';
-import { MainNav } from '../../components/Navigation/MainNav';
+import { TopBar } from '../Navigation/TopBar';
+import { MainNav } from '../Navigation/MainNav';
 import { motion } from 'framer-motion';
 
 const sampleEvents = [
@@ -11,21 +11,21 @@ const sampleEvents = [
     id: 'spring-carnival',
     title: 'Spring Carnival',
     date: 'May 5 - May 7, 2025',
-    image: 'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=800',
+    image: 'https://visitlitchfield.com/wp-content/uploads/2024/03/carnival-1.jpg',
     shortDescription: 'A weekend full of fun rides, games, and food!'
   },
   {
     id: 'country-concert',
     title: 'Country Music Concert',
     date: 'June 12, 2025',
-    image: 'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=800',
+    image: 'https://images.pexels.com/photos/3727150/pexels-photo-3727150.jpeg',
     shortDescription: 'Enjoy live performances by top country artists.'
   },
   {
     id: 'food-truck-fiesta',
     title: 'Food Truck Fiesta',
     date: 'July 4, 2025',
-    image: 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQACqVeydR6Pjm99kfhBvtM8M5gSndGs87DEA&s',
     shortDescription: 'Taste the best food from around the region.'
   }
 ];

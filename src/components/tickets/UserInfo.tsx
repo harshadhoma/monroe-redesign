@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { TopBar } from '../../components/Navigation/TopBar';
-import { MainNav } from '../../components/Navigation/MainNav';
+import { TopBar } from '../Navigation/TopBar';
+import { MainNav } from '../Navigation/MainNav';
 
 export default function UserInfo() {
   const navigate = useNavigate();

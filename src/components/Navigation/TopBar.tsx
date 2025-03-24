@@ -1,13 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Map, Bell, Music, Ticket } from 'lucide-react';
+import { Calendar, Map, Bell, Ticket, GraduationCap, Camera } from 'lucide-react';
+
 
 const quickLinks = [
   { icon: Ticket, text: 'Buy Tickets', href: '/tickets' },
-  { icon: Calendar, text: 'Event Schedule', href: '#' },
-  { icon: Bell, text: 'Fair Updates', href: '#' },
-  { icon: Map, text: 'Interactive Map', href: '#' },
-  { icon: Music, text: 'Live Entertainment', href: '#' },
+  { icon: Calendar, text: 'Event Schedule', href: '/schedule' },
+  { icon: GraduationCap, text: '4-H', href: '/4h' },
+  { icon: Map, text: 'Interactive Map', href: '/map' },
+  { icon: Camera, text: 'Upload Pictures', href: '/upload' },
+  { icon: Bell, text: 'Fair Updates', href: '/updates' },
 ];
 
 export function TopBar() {

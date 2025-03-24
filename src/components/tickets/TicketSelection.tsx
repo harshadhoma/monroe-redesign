@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
-import { TopBar } from '../../components/Navigation/TopBar';
-import { MainNav } from '../../components/Navigation/MainNav';
+import { TopBar } from '../Navigation/TopBar';
+import { MainNav } from '../Navigation/MainNav';
 
 const ticketOptions = [
   { label: 'Adult', description: 'Age 12+', price: 10 },

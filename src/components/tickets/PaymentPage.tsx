@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { TopBar } from '../../components/Navigation/TopBar';
-import { MainNav } from '../../components/Navigation/MainNav';
+import { TopBar } from '../Navigation/TopBar';
+import { MainNav } from '../Navigation/MainNav';
 import { generateTicketPDF } from '../../utils/generateTicketPDF';
 import { motion } from 'framer-motion';
 
