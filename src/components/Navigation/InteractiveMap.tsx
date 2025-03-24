@@ -3,6 +3,7 @@ import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
+import { Header } from './HeaderComponent';
 
 const locations = [
   { top: "73%", left: "70%", label: "4-H Building", path: "/4h" },
@@ -23,8 +24,9 @@ const locations = [
 export default function FairgroundsMap() {
   return (
     <div className="min-h-screen bg-purple-50">
-      <TopBar />
-      <MainNav />
+      {/* <TopBar />
+      <MainNav /> */}
+      <Header />
       <br></br>
       <h1 className="text-3xl font-bold text-purple-800 text-center mb-6">🗺️ Explore the Fairgrounds</h1>
       <div className="relative max-w-3xl mx-auto">
