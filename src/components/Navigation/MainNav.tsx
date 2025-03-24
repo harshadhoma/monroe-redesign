@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MegaMenu } from './MegaMenu';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 
 const navigationItems = [
   {
@@ -133,6 +133,7 @@ const navigationItems = [
 export function MainNav() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
   const location = useLocation();
 
   useEffect(() => {
@@ -145,6 +146,13 @@ export function MainNav() {
       document.body.style.overflow = '';
     };
   }, [mobileOpen]);
+
+  const toggleSection = (title: string) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
 
   return (
     <div className="bg-white border-b">
@@ -178,29 +186,46 @@ export function MainNav() {
 
       {/* Mobile Nav Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white px-4 py-4 space-y-6 shadow-lg"
-        style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', touchAction: 'auto' }}>
+        <div
+          className="md:hidden bg-white px-4 py-4 shadow-lg"
+          style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', touchAction: 'auto' }}
+        >
           {navigationItems.map((item) => (
-            <div key={item.title}>
-              <h3 className="text-purple-800 font-semibold mb-2">{item.title}</h3>
-              <ul className="pl-2 space-y-1">
-                {item.items.flatMap(section => section.links).map((link, idx) => (
-                  <li key={idx}>
-                    <Link
-                      to={link.href}
-                      onClick={() => {
-                        setMobileOpen(false);
-                        setTimeout(() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }, 100);
-                      }}
-                      className="text-gray-600 hover:text-purple-700 block"
-                    >
-                      {link.text}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div key={item.title} className="mb-4">
+              <button
+                className="flex justify-between items-center w-full text-left text-purple-800 font-semibold text-lg mb-2"
+                onClick={() => toggleSection(item.title)}
+              >
+                {item.title}
+                {expandedSections[item.title] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+              </button>
+              {expandedSections[item.title] && (
+                <div className="space-y-4">
+                  {item.items.map((section, i) => (
+                    <div key={i}>
+                      <p className="text-sm font-semibold text-gray-700 mb-1">{section.section}</p>
+                      <ul className="pl-4 space-y-1">
+                        {section.links.map((link, idx) => (
+                          <li key={idx}>
+                            <Link
+                              to={link.href}
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setTimeout(() => {
+                                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }, 100);
+                              }}
+                              className="text-gray-600 hover:text-purple-700 block text-sm"
+                            >
+                              {link.text}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
