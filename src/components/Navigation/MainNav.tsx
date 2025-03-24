@@ -3,6 +3,8 @@ import { MegaMenu } from './MegaMenu';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 
 const navigationItems = [
@@ -174,7 +176,20 @@ const navigationItems = [
 export function MainNav() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  // const location = useLocation();
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'; // disable scroll
+    } else {
+      document.body.style.overflow = ''; // re-enable scroll
+    }
+  
+    // Cleanup on unmount just in case
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
 
   return (
     <div className="bg-white border-b">
