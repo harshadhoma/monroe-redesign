@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { MegaMenu } from './MegaMenu';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp, Calendar, Map, Handshake, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navigationItems = [
   {
     title: "Events & Attractions",
+    icon: Calendar,
     items: [
       {
         section: "Featured Events",
@@ -35,6 +37,7 @@ const navigationItems = [
   },
   {
     title: "Plan Your Visit",
+    icon: Map,
     items: [
       {
         section: "Getting Here",
@@ -62,6 +65,7 @@ const navigationItems = [
   },
   {
     title: "Get Involved",
+    icon: Handshake,
     items: [
       {
         section: "Vendors & Visitors",
@@ -99,6 +103,7 @@ const navigationItems = [
   },
   {
     title: "About Us",
+    icon: Info,
     items: [
       {
         section: "Our Story",
@@ -162,7 +167,6 @@ export function MainNav() {
             Monroe County Fairgrounds
           </a>
 
-          {/* Desktop Nav */}
           <div className="relative hidden md:flex space-x-8">
             {navigationItems.map((item) => (
               <MegaMenu
@@ -175,7 +179,6 @@ export function MainNav() {
             ))}
           </div>
 
-          {/* Mobile Hamburger */}
           <div className="md:hidden">
             <button onClick={() => setMobileOpen(!mobileOpen)}>
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -184,7 +187,6 @@ export function MainNav() {
         </div>
       </div>
 
-      {/* Mobile Nav Menu */}
       {mobileOpen && (
         <div
           className="md:hidden bg-white px-4 py-4 shadow-lg"
@@ -193,39 +195,51 @@ export function MainNav() {
           {navigationItems.map((item) => (
             <div key={item.title} className="mb-4">
               <button
-                className="flex justify-between items-center w-full text-left text-purple-800 font-semibold text-lg mb-2"
+                className="flex justify-between items-center w-full text-left text-purple-800 font-semibold text-xl mb-2"
                 onClick={() => toggleSection(item.title)}
               >
-                {item.title}
+                <span className="flex items-center gap-2">
+                  {item.icon && <item.icon className="w-5 h-5" />} {item.title}
+                </span>
                 {expandedSections[item.title] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
-              {expandedSections[item.title] && (
-                <div className="space-y-4">
-                  {item.items.map((section, i) => (
-                    <div key={i}>
-                      <p className="text-sm font-semibold text-gray-700 mb-1">{section.section}</p>
-                      <ul className="pl-4 space-y-1">
-                        {section.links.map((link, idx) => (
-                          <li key={idx}>
-                            <Link
-                              to={link.href}
-                              onClick={() => {
-                                setMobileOpen(false);
-                                setTimeout(() => {
-                                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                                }, 100);
-                              }}
-                              className="text-gray-600 hover:text-purple-700 block text-sm"
-                            >
-                              {link.text}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+              <AnimatePresence>
+                {expandedSections[item.title] && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="space-y-4">
+                      {item.items.map((section, i) => (
+                        <div key={i}>
+                          <p className="text-base font-semibold text-gray-700 mb-1">{section.section}</p>
+                          <ul className="pl-4 space-y-1">
+                            {section.links.map((link, idx) => (
+                              <li key={idx}>
+                                <Link
+                                  to={link.href}
+                                  onClick={() => {
+                                    setMobileOpen(false);
+                                    setTimeout(() => {
+                                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }, 100);
+                                  }}
+                                  className="text-gray-600 hover:text-purple-700 block text-base"
+                                >
+                                  {link.text}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
