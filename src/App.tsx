@@ -30,7 +30,7 @@ function App() {
           transition={{ duration: 1, delay: 0.5 }}
           className="relative h-full flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <div className="max-w-2xl">
+          <div className="max-w-2xl px-4 sm:px-6 lg:px-8">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="flex space-x-6"
+              className="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0"
             >
               <Link to="/tickets/calendar">
               <motion.button
