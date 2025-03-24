@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Map, Bell, Ticket, GraduationCap, Camera } from 'lucide-react';
 
-
 const quickLinks = [
   { icon: Ticket, text: 'Buy Tickets', href: '/tickets' },
   { icon: Calendar, text: 'Event Schedule', href: '/schedule' },
@@ -16,8 +15,8 @@ export function TopBar() {
   return (
     <div className="bg-purple-900 text-white py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Ensure the links are aligned to the right */}
-        <div className="flex justify-end space-x-6">
+        {/* Responsive container */}
+        <div className="flex flex-col items-start sm:flex-row sm:justify-end sm:items-center gap-2 sm:gap-6">
           {quickLinks.map((link, index) => (
             <motion.a
               key={index}

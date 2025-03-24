@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { MegaMenu } from './MegaMenu';
 import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+
 
 
 const navigationItems = [
@@ -171,20 +173,18 @@ const navigationItems = [
 
 export function MainNav() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <div className="bg-white border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Flex container for Title and Menu */}
         <div className="flex items-center justify-between py-0">
-          
-          {/* Left Side: Fairgrounds Title */}
           <a href="/" className="text-2xl font-bold text-purple-800">
             Monroe County Fairgrounds
           </a>
 
-          {/* Right Side: Navigation Menu */}
-          <div className="relative flex space-x-8">
+          {/* Desktop Nav */}
+          <div className="relative hidden md:flex space-x-8">
             {navigationItems.map((item) => (
               <MegaMenu
                 key={item.title}
@@ -195,8 +195,35 @@ export function MainNav() {
               />
             ))}
           </div>
+
+          {/* Mobile Hamburger */}
+          <div className="md:hidden">
+            <button onClick={() => setMobileOpen(!mobileOpen)}>
+              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile Nav Menu */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white px-4 py-4 space-y-6 shadow-lg">
+          {navigationItems.map((item) => (
+            <div key={item.title}>
+              <h3 className="text-purple-800 font-semibold mb-2">{item.title}</h3>
+              <ul className="pl-2 space-y-1">
+                {item.items.flatMap(section => section.links).map((link, idx) => (
+                  <li key={idx}>
+                    <Link to={link.href} className="text-gray-600 hover:text-purple-700 block">
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
