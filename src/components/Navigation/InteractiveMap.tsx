@@ -28,7 +28,7 @@ export default function FairgroundsMap() {
       <br></br>
       <h1 className="text-3xl font-bold text-purple-800 text-center mb-6">🗺️ Explore the Fairgrounds</h1>
       <div className="relative max-w-3xl mx-auto">
-        <img src="/src/images/monroefg.png" alt="Fairground Map" className="w-full rounded-lg shadow" />
+        <img src="/assests/monroefg.png" alt="Fairground Map" className="w-full rounded-lg shadow" />
         {locations.map((loc, i) => (
           <div
             key={i}
