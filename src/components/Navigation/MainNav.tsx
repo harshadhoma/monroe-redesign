@@ -216,17 +216,20 @@ export function MainNav() {
                 {item.items.flatMap(section => section.links).map((link, idx) => (
                   <li key={idx}>
                     <Link
-                    to={link.href}
-                    onClick={() => {
-                      if (location.pathname === link.href) {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
-                      setMobileOpen(false);
-                    }}
-                    className="text-gray-600 hover:text-purple-700 block"
-                  >
-                    {link.text}
-                  </Link>
+                      to={link.href}
+                      onClick={() => {
+                        setMobileOpen(false);
+
+                        // Always scroll to top after menu closes, even if same page
+                        setTimeout(() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }, 100); // allow DOM to update first
+                      }}
+                      className="text-gray-600 hover:text-purple-700 block"
+                    >
+                      {link.text}
+                    </Link>
+
 
                   </li>
                 ))}
