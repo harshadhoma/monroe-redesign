@@ -14,7 +14,7 @@ const navigationItems = [
         links: [
           // { text: "Annual Fair", href: "/" },
           { text: "Upcoming Events", href: "/events" },
-          { text: "Competitions", href: "/" },
+          // { text: "Competitions", href: "/" },
           { text: "Carnival & Entertainment", href: "/" },
         ]
       },
@@ -30,17 +30,17 @@ const navigationItems = [
       {
         section: "Entertainment",
         links: [
-          { text: "Live Music", href: "/" },
-          { text: "Family Shows", href: "/" },
-          { text: "Special Performances", href: "/" },
-          { text: "Daily Schedule", href: "/" },
+          // { text: "Live Music", href: "/" },
+          // { text: "Family Shows", href: "/" },
+          // { text: "Special Performances", href: "/" },
+          // { text: "Daily Schedule", href: "/" },
         ]
       },
       {
         section: "Tickets",
         links: [
           { text: "Buy Tickets", href: "/tickets/calendar" },
-          { text: "Pricing Options", href: "/" },
+          // { text: "Pricing Options", href: "/" },
           { text: "Season Passes", href: "/" },
           // { text: "VIP Packages", href: "/" },
         ]
@@ -55,7 +55,7 @@ const navigationItems = [
         links: [
           { text: "Maps & Directions", href: "/" },
           { text: "Parking Information", href: "/" },
-          { text: "Accessibility", href: "/" },
+          // { text: "Accessibility", href: "/" },
           { text: "Public Transportation", href: "/" },
         ]
       },
@@ -63,8 +63,8 @@ const navigationItems = [
         section: "At the Fair",
         links: [
           { text: "Food & Vendors", href: "/" },
-          { text: "Shopping Guide", href: "/" },
-          { text: "Amenities", href: "/" },
+          // { text: "Shopping Guide", href: "/" },
+          // { text: "Amenities", href: "/" },
           { text: "First Aid", href: "/" },
         ]
       },
@@ -72,8 +72,8 @@ const navigationItems = [
         section: "Accommodations",
         links: [
           // { text: "Partner Hotels", href: "/" },
-          { text: "RV Camping", href: "/" },
-          { text: "Group Services", href: "/" },
+          // { text: "RV Camping", href: "/" },
+          // { text: "Group Services", href: "/" },
           { text: "Local Attractions", href: "/" },
         ]
       },
@@ -82,8 +82,8 @@ const navigationItems = [
         links: [
           { text: "FAQs", href: "/" },
           { text: "Fair Guide", href: "/" },
-          { text: "Rules & Policies", href: "/" },
-          { text: "Contact Support", href: "/" },
+          // { text: "Rules & Policies", href: "/" },
+          // { text: "Contact Support", href: "/" },
         ]
       }
     ]
@@ -105,8 +105,8 @@ const navigationItems = [
         links: [
           { text: "Opportunities", href: "/" },
           { text: "Current Sponsors", href: "/sponsor" },
-          { text: "Benefits", href: "/" },
-          { text: "Contact", href: "/" },
+          // { text: "Benefits", href: "/" },
+          // { text: "Contact", href: "/" },
         ]
       },
       {
@@ -115,16 +115,16 @@ const navigationItems = [
           { text: "Volunteer", href: "/" },
           { text: "Job Opportunities", href: "/" },
           { text: "Donations", href: "/" },
-          { text: "Support Programs", href: "/" },
+          // { text: "Support Programs", href: "/" },
         ]
       },
       {
         section: "Education",
         links: [
           { text: "4-H", href: "/4h" },
-          { text: "Youth Development", href: "/" },
-          { text: "Workshops", href: "/" },
-          { text: "Resources", href: "/" },
+          // { text: "Youth Development", href: "/" },
+          // { text: "Workshops", href: "/" },
+          // { text: "Resources", href: "/" },
         ]
       }
     ]
@@ -144,9 +144,9 @@ const navigationItems = [
       {
         section: "News & Media",
         links: [
-          { text: "Press Releases", href: "/" },
-          { text: "News Coverage", href: "/" },
-          { text: "Media Kit", href: "/" },
+          // { text: "Press Releases", href: "/" },
+          // { text: "News Coverage", href: "/" },
+          // { text: "Media Kit", href: "/" },
         ]
       },
       {
