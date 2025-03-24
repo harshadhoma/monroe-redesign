@@ -6,10 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ParallaxImage } from './components/ParallaxImage';
 import { AnimatedCard } from './components/AnimatedCard';
 import { EventCard } from './components/EventCard';
-// import { VendorBooking } from '../components/vendor/VendorBooking';
 import { Link } from 'react-router-dom';
-
-
 
 
 function App() {
