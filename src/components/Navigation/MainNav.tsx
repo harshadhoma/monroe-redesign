@@ -141,14 +141,14 @@ const navigationItems = [
           { text: "Staff Directory", href: "/" },
         ]
       },
-      {
-        section: "News & Media",
-        links: [
-          // { text: "Press Releases", href: "/" },
-          // { text: "News Coverage", href: "/" },
-          // { text: "Media Kit", href: "/" },
-        ]
-      },
+      // {
+      //   section: "News & Media",
+      //   links: [
+      //     // { text: "Press Releases", href: "/" },
+      //     // { text: "News Coverage", href: "/" },
+      //     // { text: "Media Kit", href: "/" },
+      //   ]
+      // },
       {
         section: "Contact",
         links: [
