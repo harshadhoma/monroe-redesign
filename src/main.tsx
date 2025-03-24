@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
-import { VendorBooking } from './components/VendorBooking';
 import { LoginPage } from './components/vendor/LoginPage';
 import { RegisterPage } from './components/vendor/RegisterPage';
 import { VendorDashboard } from './components/vendor/VendorDashboard';
