@@ -215,9 +215,19 @@ export function MainNav() {
               <ul className="pl-2 space-y-1">
                 {item.items.flatMap(section => section.links).map((link, idx) => (
                   <li key={idx}>
-                    <Link to={link.href} className="text-gray-600 hover:text-purple-700 block">
-                      {link.text}
-                    </Link>
+                    <Link
+                    to={link.href}
+                    onClick={() => {
+                      if (location.pathname === link.href) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                      setMobileOpen(false);
+                    }}
+                    className="text-gray-600 hover:text-purple-700 block"
+                  >
+                    {link.text}
+                  </Link>
+
                   </li>
                 ))}
               </ul>
