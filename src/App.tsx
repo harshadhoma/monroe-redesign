@@ -35,7 +35,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-6xl font-bold text-white mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             >
               Experience the Magic
             </motion.h1>
@@ -43,7 +43,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="text-2xl text-gray-200 mb-8"
+              className="text-base md:text-lg lg:text-2xl text-gray-200 mb-8"
             >
               Join us for unforgettable events, shows, and celebrations at Monroe County's premier venue
             </motion.p>
