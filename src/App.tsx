@@ -170,10 +170,10 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-white transition">Events Calendar</a></li>
+                <li><a href="/tickets/calendar" className="text-gray-300 hover:text-white transition">Events Calendar</a></li>
                 <li><a href="#" className="text-gray-300 hover:text-white transition">Facility Rental</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition">4-H Programs</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                <li><a href="/4h" className="text-gray-300 hover:text-white transition">4-H Programs</a></li>
+                <li><a href="/" className="text-gray-300 hover:text-white transition">Contact Us</a></li>
               </ul>
             </div>
             <div>
