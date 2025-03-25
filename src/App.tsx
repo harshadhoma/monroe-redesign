@@ -25,7 +25,7 @@ function App() {
       {/* <div className="relative pt-20 h-screen"> */}
       <div className="relative h-[81vh] flex items-start">
         <ParallaxImage
-          src="/assests/back.webp"
+          src="/assests/background.png"
           // src="https://media.nbcsandiego.com/2021/04/GettyImages-1159157844.jpg?quality=85&strip=all&resize=1200%2C675"
           // src="https://offloadmedia.feverup.com/secretseattle.co/wp-content/uploads/2024/08/20120934/23fair_carnival_daytime_JC216-1024x683.jpg"
           alt="Fairgrounds"
