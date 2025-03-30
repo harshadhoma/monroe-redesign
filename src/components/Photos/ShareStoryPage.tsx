@@ -10,18 +10,22 @@ export default function ShareStoryPage() {
     {
       url: 'https://media.istockphoto.com/id/1051006172/photo/happy-family-having-fun-at-an-amusement-park.jpg?s=612x612&w=0&k=20&c=jJMD1lEcEiDbpAWkbnypUUBpTVfHwLptyEDLwUnJoqI=',
       caption: 'We had the best family weekend ever!',
+      name: 'Jessica Bae from Bloomington',
     },
     {
       url: 'https://media.istockphoto.com/id/1346019586/photo/happy-family-at-the-amusement-park.jpg?s=612x612&w=0&k=20&c=SSwexQLeARMZYk8xhvPt4kpFok6FKHu0ozKhwCSK0lw=',
       caption: 'The food trucks were amazing!',
+      name: 'David Thomas from Monroe',
     },
     {
       url: 'https://media.istockphoto.com/id/1266364936/photo/family-has-fun-at-outdoor-carnival-setting.jpg?s=612x612&w=0&k=20&c=n8UpAe4DQnjiWgsfDfZORU32Y--ilPAwHJ6JnMP08T0=',
       caption: 'My daughter loved the pony rides 🐴',
+      name: 'Kala Owan from Bloomington',
     },
     {
       url: 'https://media.istockphoto.com/id/2132930819/photo/family-fun-at-the-funfair.jpg?s=612x612&w=0&k=20&c=-SN7Ixyr6jYRr8pjMXY4xsSxRvesUdnucYpNR3P4Xsk=',
       caption: 'The fireworks were magical ✨',
+      name: 'Steve from Indiana',
     },
   ];
   
@@ -32,12 +36,13 @@ export default function ShareStoryPage() {
 
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-purple-800">📸 Share Your Story</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-800">
+            📸 Share Your Story
+        </h1>
+
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800"
-          >
-            + Share Your Story
+            className="bg-purple-700 text-white text-sm sm:text-base px-4 py-2 rounded hover:bg-purple-800 whitespace-nowrap">          + Share Your Story
           </button>
         </div>
 
@@ -54,6 +59,7 @@ export default function ShareStoryPage() {
         className="w-full h-40 object-cover rounded-md mb-2"
       />
       <p className="text-sm text-gray-700 italic text-center">“{story.caption}”</p>
+      <p className="text-xs text-purple-700 font-semibold text-center">{story.name}</p>
     </div>
   ))}
 </div>
