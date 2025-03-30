@@ -86,7 +86,7 @@ const navigationItems = [
       {
         section: "Community",
         links: [
-          { text: "Volunteer", href: "/" },
+          { text: "Meet your Community", href: "/community" },
           { text: "Job Opportunities", href: "/" },
           { text: "Donations", href: "/" },
         ]

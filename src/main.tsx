@@ -29,6 +29,7 @@ import FairgroundsMap from './components/Navigation/InteractiveMap';
 import GalleryPage from './components/Photos/GalleryWall';
 import ShareStoryPage from './components/Photos/ShareStoryPage';
 import ShareYourStory  from './components/Photos/ShareYourStory';
+import MeetYourCommunity from './components/MeetYourCommunity';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -62,6 +63,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/upload' element={<GalleryPage />} />
         <Route path="/share-your-story" element={<ShareStoryPage />} />
         <Route path="/share" element={<ShareYourStory />} />
+        <Route path="/community" element={<MeetYourCommunity />} />
 
 
       </Routes>
