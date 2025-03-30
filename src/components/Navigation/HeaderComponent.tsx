@@ -10,7 +10,7 @@ const quickLinks = [
   { icon: Calendar, text: 'Event Schedule', href: '/schedule' },
   { icon: GraduationCap, text: '4-H', href: '/4h' },
   { icon: Map, text: 'Interactive Map', href: '/map' },
-  { icon: Camera, text: 'Upload Pictures', href: '/upload' },
+  { icon: Camera, text: 'Share Your Story', href: '/share-your-story' },
   { icon: Bell, text: 'Fair Updates', href: '/updates' },
 ];
 
@@ -18,7 +18,7 @@ export function Header() {
   const [showQuickLinks, setShowQuickLinks] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white">
       {/* Top Quick Links Bar */}
       <div className="bg-purple-900 text-white text-sm px-4 py-2">
         <div className="flex flex-col items-start sm:flex-row sm:justify-end sm:items-center gap-2 sm:gap-6">
@@ -63,7 +63,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
+      {/* Main Navigation */}
       <MainNav />
     </header>
   );

@@ -27,6 +27,9 @@ import FourHShowcase from './components/4H/4h';
 import FourHSchedule from './components/4H/4h-schedule';
 import FairgroundsMap from './components/Navigation/InteractiveMap';
 import GalleryPage from './components/Photos/GalleryWall';
+import ShareStoryPage from './components/Photos/ShareStoryPage';
+import ShareYourStory  from './components/Photos/ShareYourStory';
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -57,9 +60,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/4h' element={<FourHShowcase />} />
         <Route path='/4h-schedule' element={<FourHSchedule />} />
         <Route path='/upload' element={<GalleryPage />} />
-
-
-
+        <Route path="/share-your-story" element={<ShareStoryPage />} />
+        <Route path="/share" element={<ShareYourStory />} />
 
 
       </Routes>
