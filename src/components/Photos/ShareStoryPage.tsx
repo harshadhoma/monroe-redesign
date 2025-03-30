@@ -10,22 +10,26 @@ export default function ShareStoryPage() {
     {
       url: 'https://media.istockphoto.com/id/1051006172/photo/happy-family-having-fun-at-an-amusement-park.jpg?s=612x612&w=0&k=20&c=jJMD1lEcEiDbpAWkbnypUUBpTVfHwLptyEDLwUnJoqI=',
       caption: 'We had the best family weekend ever!',
-      name: 'Jessica Bae from Bloomington',
+      name: 'Jessica Bae',
+      address: 'Bloomington'
     },
     {
       url: 'https://media.istockphoto.com/id/1346019586/photo/happy-family-at-the-amusement-park.jpg?s=612x612&w=0&k=20&c=SSwexQLeARMZYk8xhvPt4kpFok6FKHu0ozKhwCSK0lw=',
       caption: 'The food trucks were amazing!',
-      name: 'David Thomas from Monroe',
+      name: 'David Thomas',
+      address: 'Monroe',
     },
     {
       url: 'https://media.istockphoto.com/id/1266364936/photo/family-has-fun-at-outdoor-carnival-setting.jpg?s=612x612&w=0&k=20&c=n8UpAe4DQnjiWgsfDfZORU32Y--ilPAwHJ6JnMP08T0=',
       caption: 'My daughter loved the pony rides 🐴',
-      name: 'Kala Owan from Bloomington',
+      name: 'Kala Owan',
+      address: 'Bloomington',
     },
     {
       url: 'https://media.istockphoto.com/id/2132930819/photo/family-fun-at-the-funfair.jpg?s=612x612&w=0&k=20&c=-SN7Ixyr6jYRr8pjMXY4xsSxRvesUdnucYpNR3P4Xsk=',
       caption: 'The fireworks were magical ✨',
-      name: 'Steve from Indiana',
+      name: 'Steve Waugh',
+      address: 'Indiana',
     },
   ];
   
@@ -60,6 +64,7 @@ export default function ShareStoryPage() {
       />
       <p className="text-sm text-gray-700 italic text-center">“{story.caption}”</p>
       <p className="text-xs text-purple-700 font-semibold text-center">{story.name}</p>
+      <p className="text-xs text-purple-700 italic text-center">- from {story.address}</p>
     </div>
   ))}
 </div>
