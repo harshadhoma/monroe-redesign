@@ -8,6 +8,7 @@ import { RegisterPage } from './components/vendor/RegisterPage';
 import { VendorDashboard } from './components/vendor/VendorDashboard';
 import { MapPreview } from './components/vendor/MapPreview';
 import { VendorBookingForm } from './components/vendor/VendorBookingForm';
+import { VendorMap }from './components/vendor/VendorMap';
 import TicketsList from './components/tickets/TicketsList';
 import EventDetails from './components/Events/EventDetails';
 import TicketSelection from './components/tickets/TicketSelection';
@@ -41,7 +42,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/vendor/register" element={<RegisterPage />} />
         <Route path="/map" element={<FairgroundsMap />} />
         <Route path="/vendor/dashboard" element={<VendorDashboard />} />
-        <Route path="/vendor/event/:id/map" element={<MapPreview />} />
+        <Route path="/vendor/event/eventId/map" element={<VendorMap />} />
         <Route path="/vendor/event/:id/booking" element={<VendorBookingForm />} />
         <Route path="/auth/login" element={<VisitorLogin />} />
         <Route path="/auth/register" element={<VisitorRegister />} />
@@ -64,6 +65,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/share-your-story" element={<ShareStoryPage />} />
         <Route path="/share" element={<ShareYourStory />} />
         <Route path="/community" element={<MeetYourCommunity />} />
+        <Route path="/vendor/event/:eventId/map" element={<VendorMap />} />
 
 
       </Routes>
