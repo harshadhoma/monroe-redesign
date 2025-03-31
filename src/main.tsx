@@ -31,11 +31,14 @@ import GalleryPage from './components/Photos/GalleryWall';
 import ShareStoryPage from './components/Photos/ShareStoryPage';
 import ShareYourStory  from './components/Photos/ShareYourStory';
 import MeetYourCommunity from './components/MeetYourCommunity';
+import ScrollToTop from './components/Navigation/ScrollToTop';
+
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/vendor/login" element={<LoginPage />} />
