@@ -9,6 +9,48 @@ import { Header } from './components/Navigation/HeaderComponent';
 import ScrollToTop from './components/Navigation/ScrollToTop';
 import { ThisWeekOverlay } from './sections/ThisWeek';
 
+function SocialToggleFAB() {
+  const [open, setOpen] = useState(false);
+
+  const icons = [
+    { icon: Facebook, color: "bg-blue-600", href: "https://www.facebook.com/monroecountyfairgrounds" },
+    { icon: Twitter, color: "bg-sky-400", href: "#" },
+    { icon: Instagram, color: "bg-pink-600", href: "#" },
+    { icon: Youtube, color: "bg-red-600", href: "#" },
+    { icon: Mail, color: "bg-green-600", href: "#" }
+  ];
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+          className="flex flex-col items-end space-y-2 mb-2"
+        >
+          {icons.map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.href}
+              whileHover={{ scale: 1.1 }}
+              className={`${item.color} p-3 rounded-full text-white shadow-lg`}
+            >
+              <item.icon className="w-5 h-5" />
+            </motion.a>
+          ))}
+        </motion.div>
+      )}
+      <img
+        onClick={() => setOpen(!open)}
+        src="/assests/socialMedia.png"
+        alt="Social Media Toggle"
+        className={`w-12 h-12 cursor-pointer transition-transform ${open ? 'rotate-180' : ''}`}
+      />
+    </div>
+  );
+}
+
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -18,11 +60,9 @@ function App() {
       <div className="min-h-screen bg-white overflow-x-hidden">
         <Header />
 
-        {/* Hero Section - Fix applied */}
         <div className="relative h-[81vh] flex items-start -mt-px">
           <ParallaxImage
             src="/assests/background.png"
-            // src="https://t3.ftcdn.net/jpg/02/22/54/72/360_F_222547272_91qeN1aDmDM3Nr8ilPKCM1ZD7YWKnYWm.jpg"
             alt="Fairgrounds"
             className="absolute inset-0"
           />
@@ -77,7 +117,6 @@ function App() {
                   </Link>
                 </div>
 
-                {/* This Week CTA */}
                 <div className="mt-6 text-center">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -93,10 +132,8 @@ function App() {
           </motion.div>
         </div>
 
-        {/* This Week Overlay Modal */}
         <ThisWeekOverlay isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
-        {/* Featured Events Section */}
         <div className="py-20 bg-gradient-to-b from-purple-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -131,7 +168,6 @@ function App() {
           </div>
         </div>
 
-        {/* Quick Info Section */}
         <div className="bg-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-3 gap-8">
@@ -154,32 +190,8 @@ function App() {
           </div>
         </div>
 
-        {/* Social Media Sidebar */}
-        <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40">
-          <div className="flex flex-col space-y-2">
-            {[
-              { icon: Facebook, color: "bg-blue-600", href: "https://www.facebook.com/monroecountyfairgrounds" },
-              { icon: Twitter, color: "bg-sky-400", href: "#" },
-              { icon: Instagram, color: "bg-pink-600", href: "#" },
-              { icon: Youtube, color: "bg-red-600", href: "#" },
-              { icon: Mail, color: "bg-green-600", href: "#" }
-            ].map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.href}
-                initial={{ x: 100 }}
-                animate={{ x: 0 }}
-                transition={{ delay: 0.1 * index }}
-                whileHover={{ x: -10, scale: 1.1 }}
-                className={`${item.color} p-3 rounded-l-lg text-white hover:shadow-lg transition duration-300`}
-              >
-                <item.icon className="w-6 h-6" />
-              </motion.a>
-            ))}
-          </div>
-        </div>
+        <SocialToggleFAB />
 
-        {/* Footer */}
         <footer className="bg-purple-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid md:grid-cols-4 gap-8">
@@ -206,7 +218,7 @@ function App() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+                <h3 className="text-lg font-semibold mb-4 text-white">Follow Us</h3>
                 <div className="flex space-x-4">
                   {[Facebook, Twitter, Instagram, Youtube].map((Icon, index) => (
                     <motion.a
