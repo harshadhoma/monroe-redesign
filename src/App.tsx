@@ -45,7 +45,7 @@ function SocialToggleFAB() {
         onClick={() => setOpen(!open)}
         src="/assests/socialMedia.png"
         alt="Social Media Toggle"
-        className={`w-12 h-12 cursor-pointer transition-transform ${open ? 'rotate-180' : ''}`}
+        className={`w-20 h-20 cursor-pointer transition-transform ${open ? 'rotate-180' : ''}`}
       />
     </div>
   );
