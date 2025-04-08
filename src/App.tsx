@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Mail } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import {
+  MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Mail
+} from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ParallaxImage } from './components/ParallaxImage';
 import { AnimatedCard } from './components/AnimatedCard';
 import { EventCard } from './components/EventCard';
 import { Link } from 'react-router-dom';
@@ -10,10 +11,8 @@ import ScrollToTop from './components/Navigation/ScrollToTop';
 import { ThisWeekOverlay } from './sections/ThisWeek';
 import { BottomNavMobile } from './components/Navigation/BottomNavMobile';
 
-
 function SocialToggleFAB() {
   const [open, setOpen] = useState(false);
-
   const icons = [
     { icon: Facebook, color: "bg-blue-600", href: "https://www.facebook.com/monroecountyfairgrounds" },
     { icon: Twitter, color: "bg-sky-400", href: "#" },
@@ -47,8 +46,39 @@ function SocialToggleFAB() {
         onClick={() => setOpen(!open)}
         src="/assets/socialMedia.png"
         alt="Social Media Toggle"
-        className={`w-20 h-20 cursor-pointer transition-transform ${open ? 'rotate-180' : ''}`}
+        className={`w-14 h-14 cursor-pointer transition-transform duration-500 ease-in-out ${open ? 'rotate-[360deg]' : 'rotate-0'}`}
       />
+    </div>
+  );
+}
+
+function HeroCountdown() {
+  const calculateTimeLeft = () => {
+    const eventDate = new Date("2024-04-20T12:00:00");
+    const now = new Date();
+    const difference = eventDate.getTime() - now.getTime();
+    let timeLeft = {};
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  useEffect(() => {
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="text-white text-lg md:text-xl bg-black/5 rounded-full px-6 py-2 inline-block font-semibold backdrop-blur mt-4 mb-6">
+      {/* 🎉 Next Big Event in: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s */}
+      🎉 Next Big Event in: 2d 3h 35m 3s
     </div>
   );
 }
@@ -62,80 +92,73 @@ function App() {
       <div className="min-h-screen bg-white overflow-x-hidden">
         <Header />
 
-        <div className="relative h-[81vh] flex items-start -mt-px">
-          <ParallaxImage
-            src="/assets/background.png"
-            alt="Fairgrounds"
-            className="absolute inset-0"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-purple-900/40" />
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="relative h-full flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        {/* Hero Section */}
+        <div className="relative h-screen w-full overflow-hidden flex items-start justify-center pt-12 -mt-px">
+
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
           >
-            <div className="max-w-2xl px-4 sm:px-6 lg:px-8">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-              >
-                Experience the Magic
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="text-base md:text-lg lg:text-2xl text-gray-200 mb-8"
-              >
-                Join us for unforgettable events, shows, and celebrations at Monroe County's premier venue
-              </motion.p>
+            <source src="/assets/hero-video.mp4" type="video/mp4" />
+          </video>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-              >
-                <div className="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 items-center justify-center mt-4">
-                  <Link to="/tickets/calendar">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-yellow-400 text-purple-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-300 transition w-full sm:w-auto"
-                    >
-                      Get Tickets
-                    </motion.button>
-                  </Link>
-                  <Link to="/events">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition w-full sm:w-auto"
-                    >
-                      View Events
-                    </motion.button>
-                  </Link>
-                </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/50 to-transparent z-10" />
 
-                <div className="mt-6 text-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setModalOpen(true)}
-                    className="text-white underline text-base font-medium hover:text-yellow-300 transition"
-                  >
-                    👉 What’s Happening This Week
-                  </motion.button>
-                </div>
-              </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="relative z-20 text-center px-4 max-w-2xl pt-6"
+          >
+
+<div className="bg-black/5 backdrop-blur-sm rounded-lg p-4 inline-block">
+  <motion.h1 className="text-white text-4xl md:text-5xl font-extrabold mb-2 drop-shadow-lg">
+    Experience the Magic
+  </motion.h1>
+  <motion.p className="text-gray-200 text-base md:text-lg drop-shadow">
+    Unforgettable events, shows, and celebrations await at Monroe County’s premier venue
+  </motion.p>
+</div>
+
+            {/* <motion.h1 className="text-white text-4xl md:text-5xl font-extrabold mb-2 drop-shadow-lg">
+              Experience the Magic
+            </motion.h1>
+
+            <motion.p className="text-gray-200 text-base md:text-lg mb-4 drop-shadow">
+              Unforgettable events, shows, and celebrations await at Monroe County’s premier venue
+            </motion.p> */}
+
+            <HeroCountdown />
+
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0 justify-center items-center mb-3">
+              <Link to="/tickets/calendar">
+                <button className="bg-yellow-400 text-purple-900 px-8 py-3 rounded-full text-lg font-bold hover:bg-yellow-300 transition shadow-lg">
+                  Get Tickets
+                </button>
+              </Link>
+              <Link to="/events">
+                <button className="border-2 border-white text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white/10 transition shadow-md">
+                  View Events
+                </button>
+              </Link>
             </div>
+
+            <button
+              onClick={() => setModalOpen(true)}
+              className="text-white underline text-sm sm:text-base font-medium hover:text-yellow-300 transition"
+            >
+              👉 What’s Happening This Week
+            </button>
           </motion.div>
         </div>
 
         <ThisWeekOverlay isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
+
+        {/* UPCOMING EVENTS SECTION */}
         <div className="py-20 bg-gradient-to-b from-purple-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -170,13 +193,13 @@ function App() {
           </div>
         </div>
 
+        {/* CONTACT CARDS */}
         <div className="bg-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { icon: MapPin, title: "Location", content: "5700 W Airport Road\nBloomington, IN 47403" },
-                { icon: Phone, title: "Contact Us", content: "Phone: (812) 825-7439\nEmail: mocofairgrounds@gmail.com" },
-                { icon: Clock, title: "Office Hours", content: "Monday - Friday: 9AM - 5PM\nSaturday: 10AM - 2PM" }
+              {[{ icon: MapPin, title: "Location", content: "5700 W Airport Road\nBloomington, IN 47403" },
+              { icon: Phone, title: "Contact Us", content: "Phone: (812) 825-7439\nEmail: mocofairgrounds@gmail.com" },
+              { icon: Clock, title: "Office Hours", content: "Monday - Friday: 9AM - 5PM\nSaturday: 10AM - 2PM" }
               ].map((item, index) => (
                 <AnimatedCard key={index} delay={index * 0.2}>
                   <div className="p-6 flex items-start space-x-4">
@@ -194,6 +217,7 @@ function App() {
 
         <SocialToggleFAB />
 
+        {/* FOOTER */}
         <footer className="bg-purple-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid md:grid-cols-4 gap-8">
