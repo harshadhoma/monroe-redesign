@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { Header } from './components/Navigation/HeaderComponent';
 import ScrollToTop from './components/Navigation/ScrollToTop';
 import { ThisWeekOverlay } from './sections/ThisWeek';
+import { BottomNavMobile } from './components/Navigation/BottomNavMobile';
+
 
 function SocialToggleFAB() {
   const [open, setOpen] = useState(false);
@@ -237,6 +239,7 @@ function App() {
               <p>&copy; 2025 Monroe County Fairgrounds. All rights reserved.</p>
             </div>
           </div>
+          <BottomNavMobile />
         </footer>
       </div>
     </>
