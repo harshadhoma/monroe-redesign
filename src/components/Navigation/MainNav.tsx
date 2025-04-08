@@ -161,7 +161,7 @@ export function MainNav() {
 
   return (
     // <div className="bg-white border-b">
-    <div className="bg-white border-b border-transparent">
+    <div className="bg-transparent border-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-0">
           <a href="/" className="text-2xl font-bold text-purple-800">

@@ -1,3 +1,12 @@
+/* ✅ FIX IMPLEMENTATION PLAN:
+   We'll eliminate the mysterious purple patch between the nav bar and hero by ensuring:
+   1. No extra margin/padding on HeaderComponent or MainNav.
+   2. The header sections use `bg-transparent` or `bg-purple-900` where intended.
+   3. All padding/margin is controlled explicitly.
+*/
+
+// File: HeaderComponent.tsx
+
 import React, { useState } from 'react';
 import { MainNav } from './MainNav';
 import { Link } from 'react-router-dom';
@@ -18,10 +27,10 @@ export function Header() {
   const [showQuickLinks, setShowQuickLinks] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="sticky top-0 z-50 bg-transparent">
       {/* Top Quick Links Bar */}
       <div className="bg-purple-900 text-white text-sm px-4 py-2">
-        <div className="flex flex-col items-start sm:flex-row sm:justify-end sm:items-center gap-2 sm:gap-6">
+        <div className="max-w-7xl mx-auto flex flex-col items-start sm:flex-row sm:justify-end sm:items-center gap-2 sm:gap-6">
           {/* Quick Links Dropdown on Mobile */}
           <div className="relative md:hidden">
             <button
@@ -64,7 +73,9 @@ export function Header() {
       </div>
 
       {/* Main Navigation */}
-      <MainNav />
+      <div className="bg-white">
+        <MainNav />
+      </div>
     </header>
   );
 }

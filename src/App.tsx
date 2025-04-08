@@ -43,7 +43,7 @@ function SocialToggleFAB() {
       )}
       <img
         onClick={() => setOpen(!open)}
-        src="/assests/socialMedia.png"
+        src="/assets/socialMedia.png"
         alt="Social Media Toggle"
         className={`w-20 h-20 cursor-pointer transition-transform ${open ? 'rotate-180' : ''}`}
       />
@@ -62,7 +62,7 @@ function App() {
 
         <div className="relative h-[81vh] flex items-start -mt-px">
           <ParallaxImage
-            src="/assests/background.png"
+            src="/assets/background.png"
             alt="Fairgrounds"
             className="absolute inset-0"
           />

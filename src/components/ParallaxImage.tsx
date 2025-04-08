@@ -14,7 +14,7 @@ export function ParallaxImage({ src, alt, className = '' }: ParallaxImageProps) 
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
 
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
