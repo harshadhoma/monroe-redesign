@@ -140,7 +140,7 @@ function App() {
                 </button>
               </Link>
               <Link to="/events">
-                <button className="border-2 border-white text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white/10 transition shadow-md">
+              <button className="bg-yellow-400 text-purple-900 px-8 py-3 rounded-full text-lg font-bold hover:bg-yellow-300 transition shadow-lg">
                   View Events
                 </button>
               </Link>
