@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Mail
+  MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Mail, Share2
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AnimatedCard } from './components/AnimatedCard';
@@ -22,7 +22,7 @@ function SocialToggleFAB() {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+    <div className="fixed bottom-20 right-6 z-50 flex flex-col items-end space-y-2">
       {open && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -42,12 +42,22 @@ function SocialToggleFAB() {
           ))}
         </motion.div>
       )}
-      <img
+      <div
+  onClick={() => setOpen(!open)}
+  className={`w-14 h-14 cursor-pointer transition-transform duration-500 ease-in-out ${
+    open ? 'rotate-[0deg]' : 'rotate-0'
+  } bg-purple-600 flex items-center justify-center rounded-full shadow-lg`}
+  title="Toggle Social Links"
+>
+  <Share2 className="w-6 h-6 text-white" />
+</div>
+
+      {/* <img
         onClick={() => setOpen(!open)}
         src="/assets/socialMedia.png"
         alt="Social Media Toggle"
         className={`w-14 h-14 cursor-pointer transition-transform duration-500 ease-in-out ${open ? 'rotate-[360deg]' : 'rotate-0'}`}
-      />
+      /> */}
     </div>
   );
 }
