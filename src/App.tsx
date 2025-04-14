@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {
-  MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Mail, Share2
+  MapPin, Phone, Clock, Instagram, Facebook, Twitter, Youtube, Mail, Share2, 
+  Accessibility, ParkingCircle, ChevronDown, MessageCircleQuestion
 } from 'lucide-react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { AnimatedCard } from './components/AnimatedCard';
 import { EventCard } from './components/EventCard';
@@ -10,6 +15,36 @@ import { Header } from './components/Navigation/HeaderComponent';
 import ScrollToTop from './components/Navigation/ScrollToTop';
 import { ThisWeekOverlay } from './sections/ThisWeek';
 import { BottomNavMobile } from './components/Navigation/BottomNavMobile';
+
+const testimonials = [
+  { name: 'Emily R.', role: 'Visitor', quote: 'This fair was magical! The food, the shows, the vibe – 10/10.' },
+  { name: 'Mark L.', role: 'Vendor', quote: 'Well-organized, great crowd! Looking forward to next year.' },
+  { name: 'Sarah G.', role: '4-H Parent', quote: 'My kid had the best experience! Truly a community affair.' },
+  { name: 'Jake P.', role: 'Performer', quote: 'The stage setup was professional and crowd was electric.' },
+  { name: 'Olivia T.', role: 'Local Artist', quote: 'A great place to showcase art and crafts to families.' },
+  { name: 'Ben S.', role: 'Food Vendor', quote: 'Sold out my entire truck. Amazing footfall!' },
+  { name: 'Grace M.', role: 'Volunteer', quote: 'Well organized and fun for all ages. Loved helping out!' },
+  { name: 'Liam K.', role: 'Repeat Visitor', quote: 'Each year gets better — love the fireworks finale!' },
+  { name: 'Ava W.', role: 'Petting Zoo Coordinator', quote: 'Kids loved the animals. Super rewarding.' },
+  { name: 'Noah D.', role: 'Ride Operator', quote: 'The Ferris wheel views were unbeatable at sunset.' },
+];
+
+// FAQ Data
+const faqs = [
+  {
+    question: 'Where can I buy tickets?',
+    answer: 'Tickets can be purchased online or at the gate. We recommend buying in advance!',
+  },
+  {
+    question: 'Is parking available?',
+    answer: 'Yes, we have multiple lots with shuttle service. Parking is $5/day.',
+  },
+  {
+    question: 'Are pets allowed?',
+    answer: 'Only service animals are permitted on fairgrounds.',
+  },
+];
+
 
 function SocialToggleFAB() {
   const [open, setOpen] = useState(false);
@@ -21,7 +56,11 @@ function SocialToggleFAB() {
     { icon: Mail, color: "bg-green-600", href: "#" }
   ];
 
+
+  // Testimonials Data
+
   return (
+    
     <div className="fixed bottom-20 right-6 z-50 flex flex-col items-end space-y-2">
       {open && (
         <motion.div
@@ -95,11 +134,20 @@ function HeroCountdown() {
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  }, 5000); // change every 5 seconds
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <>
       <ScrollToTop />
-      <div className="min-h-screen bg-white overflow-x-hidden pb-24">
+      <div className="min-h-screen bg-white overflow-x-hidden">
         <Header />
 
         {/* Hero Section */}
@@ -169,13 +217,13 @@ function App() {
 
 
         {/* UPCOMING EVENTS SECTION */}
-        <div className="py-20 bg-gradient-to-b from-purple-50 to-white">
+        <div className="py-12 bg-gradient-to-b from-purple-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8"
             >
               <h2 className="text-4xl font-bold text-purple-900 mb-4">Upcoming Events</h2>
               <p className="text-xl text-gray-600">Don't miss out on these amazing experiences</p>
@@ -202,29 +250,132 @@ function App() {
             </div>
           </div>
         </div>
+        
+        {/* // Drop this AFTER your Upcoming Events section in App.tsx */}
+        <section className="py-1 bg-white">
 
-        {/* CONTACT CARDS */}
-        <div className="bg-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8">
-              {[{ icon: MapPin, title: "Location", content: "5700 W Airport Road\nBloomington, IN 47403" },
-              { icon: Phone, title: "Contact Us", content: "Phone: (812) 825-7439\nEmail: mocofairgrounds@gmail.com" },
-              { icon: Clock, title: "Office Hours", content: "Monday - Friday: 9AM - 5PM\nSaturday: 10AM - 2PM" }
-              ].map((item, index) => (
-                <AnimatedCard key={index} delay={index * 0.2}>
-                  <div className="p-6 flex items-start space-x-4">
-                    <item.icon className="w-6 h-6 text-purple-600" />
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                      <p className="text-gray-600 whitespace-pre-line">{item.content}</p>
-                    </div>
-                  </div>
-                </AnimatedCard>
-              ))}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-4xl font-bold text-purple-900 mb-12 text-center">Plan Your Visit</h2>
+
+    <div className="grid md:grid-cols-4 gap-8">
+      {[{
+        icon: MapPin,
+        title: 'Directions',
+        content: '5700 W Airport Rd\nBloomington, IN\nNear Hwy 37'
+      }, {
+        icon: Clock,
+        title: 'Hours & Admission',
+        content: 'Weekdays: 10AM–9PM\nWeekends: 9AM–10PM\n$5 General Entry'
+      }, {
+        icon: Accessibility,
+        title: 'Accessibility',
+        content: 'Wheelchair paths\nRental scooters available\nADA seating'
+      }, {
+        icon: ParkingCircle,
+        title: 'Parking Info',
+        content: 'Multiple lots\nShuttle service\n$5/day parking'
+      }].map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.2, duration: 0.6 }}
+          className="p-6 bg-purple-50 rounded-xl shadow-sm hover:shadow-md transition-all"
+        >
+          <div className="flex items-start space-x-4">
+            <item.icon className="w-6 h-6 text-purple-700 mt-1" />
+            <div>
+              <h3 className="text-lg font-semibold text-purple-800 mb-1">{item.title}</h3>
+              <p className="text-gray-600 whitespace-pre-line text-sm">{item.content}</p>
             </div>
           </div>
-        </div>
+        </motion.div>
+      ))}
+    </div>
 
+    <div className="text-center mt-12">
+      <Link
+        to="/visit"
+        className="inline-block px-6 py-3 bg-purple-700 text-white rounded-full font-medium hover:bg-purple-800 transition"
+      >
+        See All Visitor Info
+      </Link>
+    </div>
+  </div>
+</section>
+
+
+<section className="bg-purple-50 py-16">
+  <div className="max-w-6xl mx-auto px-4 text-center">
+    <h2 className="text-4xl font-bold text-purple-900 mb-12">What People Are Saying</h2>
+
+    {/* INLINE STYLING FIX */}
+    <style>{`
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #7e22ce !important;
+        width: 30px !important;
+        height: 30px !important;
+        top: 45% !important;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 22px !important;
+        font-weight: bold;
+      }
+    `}</style>
+
+    {/* SWIPER */}
+    <Swiper
+      modules={[Navigation, Autoplay]}
+      navigation
+      autoplay={{ delay: 4000, disableOnInteraction: false }}
+      spaceBetween={24}
+      slidesPerView={1}
+      breakpoints={{
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }}
+      className="pb-12"
+    >
+      {testimonials.map((item, index) => (
+        <SwiperSlide key={index}>
+          <div className="bg-white shadow-lg rounded-xl p-6 text-left h-full mx-2">
+            <p className="text-lg text-gray-700 mb-4">“{item.quote}”</p>
+            <h4 className="font-semibold text-purple-800">{item.name}</h4>
+            <span className="text-sm text-gray-500">{item.role}</span>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+</section>
+
+
+
+
+{/* FAQ ACCORDION */}
+<section className="bg-white py-5">
+  <div className="max-w-4xl mx-auto px-4">
+    <h2 className="text-4xl font-bold text-purple-900 text-center mb-10">Frequently Asked Questions</h2>
+    <div className="space-y-4">
+      {faqs.map((faq, index) => (
+        <details key={index} className="group border border-purple-200 rounded-lg p-4 transition-all hover:shadow">
+          <summary className="flex justify-between items-center cursor-pointer text-lg font-medium text-purple-800 group-open:text-purple-600">
+            {faq.question}
+            <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180" />
+          </summary>
+          <p className="text-gray-600 mt-2">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+ 
         <SocialToggleFAB />
 
         {/* FOOTER */}

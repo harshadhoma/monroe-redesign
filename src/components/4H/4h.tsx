@@ -59,7 +59,8 @@ export default function FourHShowcase() {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/4h-schedule" className="bg-purple-700 text-white px-6 py-2 rounded-md hover:bg-purple-800">View Schedule</Link>
-          <Link to="#gallery" className="bg-white border border-purple-700 text-purple-700 px-6 py-2 rounded-md hover:bg-purple-100">Photo Gallery</Link>
+          <Link to="/" className="bg-purple-700 text-white px-6 py-2 rounded-md hover:bg-purple-800">Photo Gallery</Link>
+          <Link to="/4h-hall-of-fame" className="bg-purple-700 text-white px-6 py-2 rounded-md hover:bg-purple-800">View 4-H Hall of Fame</Link>
         </div>
 
         {/* Animated Info Section */}

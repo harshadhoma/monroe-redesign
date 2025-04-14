@@ -32,6 +32,7 @@ import ShareStoryPage from './components/Photos/ShareStoryPage';
 import ShareYourStory  from './components/Photos/ShareYourStory';
 import MeetYourCommunity from './components/MeetYourCommunity';
 import ScrollToTop from './components/Navigation/ScrollToTop';
+import HallOfFame from './components/4H/HallOfFame';
 
 
 
@@ -69,6 +70,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/share" element={<ShareYourStory />} />
         <Route path="/community" element={<MeetYourCommunity />} />
         <Route path="/vendor/event/:eventId/map" element={<VendorMap />} />
+        <Route path='/4h-hall-of-fame' element={<HallOfFame />} />
+
 
 
       </Routes>
