@@ -1,6 +1,7 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Navigate } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
 import { LoginPage } from './components/vendor/LoginPage';
@@ -33,11 +34,22 @@ import ShareYourStory  from './components/Photos/ShareYourStory';
 import MeetYourCommunity from './components/MeetYourCommunity';
 import ScrollToTop from './components/Navigation/ScrollToTop';
 import HallOfFame from './components/4H/HallOfFame';
+import { useState } from 'react';
+import { AdminLogin } from './components/admin/AdminLogin';
+import { AdminDashboard } from './components/admin/AdminDashboard';
+import { ManageEvents } from './components/admin/ManageEvents';
+import { ManageBookings } from './components/admin/ManageBookings';
+import { AnalyticsPanel } from './components/admin/AnalyticsPanel';
+import { VendorList } from './components/admin/VendorList';
+import { AdminMessages } from './components/admin/AdminMessages';
+import { AdminReports } from './components/admin/AdminReports';
+import { AdminSettings } from './components/admin/AdminSettings';
 
 
+const AppRoutes = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  return (
     <Router>
       <ScrollToTop />
       <Routes>
@@ -72,9 +84,23 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/vendor/event/:eventId/map" element={<VendorMap />} />
         <Route path='/4h-hall-of-fame' element={<HallOfFame />} />
 
-
-
+        {/* ✅ Admin Routes */}
+        <Route path="/admin" element={<AdminLogin setIsAdmin={setIsAdmin} />} />
+        <Route path="/admin/dashboard" element={isAdmin ? <AdminDashboard setIsAdmin={setIsAdmin} /> : <Navigate to="/admin" />} />
+        <Route path="/admin/events" element={isAdmin ? <ManageEvents /> : <Navigate to="/admin" />} />
+        <Route path="/admin/bookings" element={isAdmin ? <ManageBookings /> : <Navigate to="/admin" />} />
+        <Route path="/admin/analytics" element={isAdmin ? <AnalyticsPanel /> : <Navigate to="/admin" />} />
+        <Route path="/admin/vendors" element={isAdmin ? <VendorList /> : <Navigate to="/admin" />} />
+        <Route path="/admin/messages" element={isAdmin ? <AdminMessages /> : <Navigate to="/admin" />} />
+        <Route path="/admin/reports" element={isAdmin ? <AdminReports /> : <Navigate to="/admin" />} />
+        <Route path="/admin/settings" element={isAdmin ? <AdminSettings /> : <Navigate to="/admin" />} />
       </Routes>
     </Router>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <AppRoutes />
   </React.StrictMode>
 );

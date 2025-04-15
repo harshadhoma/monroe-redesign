@@ -133,6 +133,7 @@ function HeroCountdown() {
 }
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -295,12 +296,12 @@ useEffect(() => {
     </div>
 
     <div className="text-center mt-12">
-      <Link
+      {/* <Link
         to="/visit"
         className="inline-block px-6 py-3 bg-purple-700 text-white rounded-full font-medium hover:bg-purple-800 transition"
       >
         See All Visitor Info
-      </Link>
+      </Link> */}
     </div>
   </div>
 </section>
