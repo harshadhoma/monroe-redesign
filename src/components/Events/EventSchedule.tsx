@@ -3,6 +3,8 @@ import { TopBar } from '../../components/Navigation/TopBar';
 import { MainNav } from '../../components/Navigation/MainNav';
 import { Link } from 'react-router-dom';
 import { Header } from '../../components/Navigation/HeaderComponent';
+import { FacebookEventsEmbed } from '../../components/widgets/FacebookEventsEmbed';
+
 
 type EventType = {
   id: string;
@@ -217,6 +219,8 @@ export default function EventSchedule() {
           <p className="text-gray-500 italic mt-6">No events match your filters.</p>
         )}
       </div>
+      <FacebookEventsEmbed pageUrl="https://www.facebook.com/monroecountyfairgrounds/events" />
+
     </div>
   );
 }

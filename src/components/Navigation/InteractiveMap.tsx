@@ -1,48 +1,59 @@
 import React from 'react';
-import { TopBar } from '../../components/Navigation/TopBar';
-import { MainNav } from '../../components/Navigation/MainNav';
-import { Link } from 'react-router-dom';
-import { MapPin } from 'lucide-react';
 import { Header } from './HeaderComponent';
-
-const locations = [
-  { top: "73%", left: "70%", label: "4-H Building", path: "/4h" },
-  { top: "60%", left: "55%", label: "Draper Auditorium" },
-  { top: "29%", left: "40%", label: "Music Stage" },
-  { top: "70%", left: "40%", label: "Rabbit Barn" },
-  { top: "60%", left: "80%", label: "Carnival" },
-  { top: "48%", left: "30%", label: "Swine Barn" },
-  { top: "52%", left: "38%", label: "Goat Area" },
-  { top: "60%", left: "40%", label: "Beef/Dairy" },
-  { top: "75%", left: "57%", label: "Community Building" },
-  { top: "52%", left: "67%", label: "Commercial Building" },
-  { top: "20%", left: "80%", label: "Pit Area" },
-  { top: "77%", left: "40%", label: "Poultry" },
-  { top: "47%", left: "57%", label: "Grand Stand Arena" },
-];
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 export default function FairgroundsMap() {
   return (
     <div className="min-h-screen bg-purple-50">
-      {/* <TopBar />
-      <MainNav /> */}
       <Header />
-      <br></br>
-      <h1 className="text-3xl font-bold text-purple-800 text-center mb-6">🗺️ Explore the Fairgrounds</h1>
-      <div className="relative max-w-3xl mx-auto">
-        <img src="/assets/monroefg.png" alt="Fairground Map" className="w-full rounded-lg shadow" />
-        {locations.map((loc, i) => (
-          <div
-            key={i}
-            className="absolute text-purple-700 hover:scale-110 transition-transform duration-200 cursor-pointer"
-            style={{ top: loc.top, left: loc.left, zIndex: 50 }}
-            title={loc.label}
-          >
-            <Link to={loc.path || "#"}>
-              <MapPin className="w-6 h-6" />
-            </Link>
-          </div>
-        ))}
+      <h1 className="text-3xl font-bold text-purple-800 text-center my-6">🗺️ Explore the Fairgrounds</h1>
+
+      <div className="max-w-5xl mx-auto border border-purple-200 rounded-lg overflow-hidden shadow-md bg-white">
+        <TransformWrapper
+          initialScale={1}
+          minScale={0.8}
+          maxScale={3}
+          centerOnInit
+          doubleClick={{ mode: 'zoomIn' }}
+          wheel={{ step: 0.15 }}
+          panning={{ velocityDisabled: true }}
+        >
+          {({ zoomIn, zoomOut, resetTransform }) => (
+            <>
+              {/* Zoom Controls */}
+              <div className="flex gap-2 justify-end px-4 py-2 bg-purple-100">
+                <button
+                  className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 text-sm"
+                  onClick={() => zoomIn()}
+                >
+                  Zoom In
+                </button>
+                <button
+                  className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 text-sm"
+                  onClick={() => zoomOut()}
+                >
+                  Zoom Out
+                </button>
+                <button
+                  className="bg-gray-300 text-purple-700 px-3 py-1 rounded hover:bg-gray-400 text-sm"
+                  onClick={() => resetTransform()}
+                >
+                  Reset
+                </button>
+              </div>
+
+              {/* Map Image */}
+              <TransformComponent>
+                <img
+                  src="/assets/map.png"
+                  alt="Fairground Map"
+                  className="w-full max-h-[85vh] object-contain select-none"
+                  draggable={false}
+                />
+              </TransformComponent>
+            </>
+          )}
+        </TransformWrapper>
       </div>
     </div>
   );

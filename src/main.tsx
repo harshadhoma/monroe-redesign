@@ -44,6 +44,7 @@ import { VendorList } from './components/admin/VendorList';
 import { AdminMessages } from './components/admin/AdminMessages';
 import { AdminReports } from './components/admin/AdminReports';
 import { AdminSettings } from './components/admin/AdminSettings';
+import BuildingsPage from './components/buildings/BuildingsPage';
 
 
 const AppRoutes = () => {
@@ -94,6 +95,9 @@ const AppRoutes = () => {
         <Route path="/admin/messages" element={isAdmin ? <AdminMessages /> : <Navigate to="/admin" />} />
         <Route path="/admin/reports" element={isAdmin ? <AdminReports /> : <Navigate to="/admin" />} />
         <Route path="/admin/settings" element={isAdmin ? <AdminSettings /> : <Navigate to="/admin" />} />
+        <Route path="/buildings" element={<BuildingsPage />} />
+
+
       </Routes>
     </Router>
   );

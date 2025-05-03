@@ -15,6 +15,10 @@ import { Header } from './components/Navigation/HeaderComponent';
 import ScrollToTop from './components/Navigation/ScrollToTop';
 import { ThisWeekOverlay } from './sections/ThisWeek';
 import { BottomNavMobile } from './components/Navigation/BottomNavMobile';
+import { FairAlertBar } from './components/widgets/FairAlertBar';
+
+const latestAlert = "⚠️ South Parking is full. Please use North Entrance.";
+
 
 const testimonials = [
   { name: 'Emily R.', role: 'Visitor', quote: 'This fair was magical! The food, the shows, the vibe – 10/10.' },
@@ -150,6 +154,7 @@ useEffect(() => {
       <ScrollToTop />
       <div className="min-h-screen bg-white overflow-x-hidden">
         <Header />
+        {/* <FairAlertBar message={latestAlert} /> */}
 
         {/* Hero Section */}
         <div className="relative h-screen w-full overflow-hidden flex items-start justify-center pt-12 -mt-px">

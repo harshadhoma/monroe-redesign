@@ -73,7 +73,8 @@ const navigationItems = [
           { text: "Become a Vendor", href: "/" },
           { text: "Vendor Portal", href: "/vendor/login" },
           { text: "Visitor Portal", href: "/user/dashboard" },
-          { text: "Photo Gallery", href: "/upload" },
+          { text: "Fairgrounds Buildings", href: "/buildings" },
+          // { text: "Photo Gallery", href: "/upload" },
         ]
       },
       {
@@ -129,6 +130,7 @@ const navigationItems = [
           { text: "Social Media", href: "/" },
           { text: "Blog", href: "/" },
           { text: "Community Events", href: "/" },
+          { text: "Photo Gallery", href: "/upload" },
         ]
       }
     ]
@@ -142,11 +144,7 @@ export function MainNav() {
   const location = useLocation();
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
@@ -160,14 +158,19 @@ export function MainNav() {
   };
 
   return (
-    // <div className="bg-white border-b">
-    <div className="bg-transparent border-none">
+    <div className="bg-white border-b border-[#a8dadc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-0">
-          <a href="/" className="text-2xl font-bold text-purple-800">
-            Monroe County Fairgrounds
-          </a>
-
+          {/* ✅ Optimized logo size without increasing nav height */}
+          <Link to="/" className="flex items-center">
+            <img
+              src="/logo.jpg"
+              alt="Monroe County Fairgrounds Logo"
+              className="h-full object-contain"
+              style={{ maxHeight: '100%', maxWidth: '160px' }}
+            />
+          </Link>
+          {/* Desktop Navigation */}
           <div className="relative hidden md:flex space-x-8">
             {navigationItems.map((item) => (
               <MegaMenu
@@ -180,6 +183,7 @@ export function MainNav() {
             ))}
           </div>
 
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button onClick={() => setMobileOpen(!mobileOpen)}>
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -188,15 +192,16 @@ export function MainNav() {
         </div>
       </div>
 
+      {/* Mobile Navigation Dropdown */}
       {mobileOpen && (
         <div
           className="md:hidden bg-white px-4 py-4 shadow-lg"
-          style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', touchAction: 'auto' }}
+          style={{ height: 'calc(100vh - 64px)', overflowY: 'auto' }}
         >
           {navigationItems.map((item) => (
             <div key={item.title} className="mb-4">
               <button
-                className="flex justify-between items-center w-full text-left text-purple-800 font-semibold text-xl mb-2"
+                className="flex justify-between items-center w-full text-left text-[#e63946] font-semibold text-xl mb-2"
                 onClick={() => toggleSection(item.title)}
               >
                 <span className="flex items-center gap-2">
@@ -216,7 +221,7 @@ export function MainNav() {
                     <div className="space-y-4">
                       {item.items.map((section, i) => (
                         <div key={i}>
-                          <p className="text-base font-semibold text-gray-700 mb-1">{section.section}</p>
+                          <p className="text-base font-semibold text-[#1d3557] mb-1">{section.section}</p>
                           <ul className="pl-4 space-y-1">
                             {section.links.map((link, idx) => (
                               <li key={idx}>
@@ -228,7 +233,7 @@ export function MainNav() {
                                       window.scrollTo({ top: 0, behavior: 'smooth' });
                                     }, 100);
                                   }}
-                                  className="text-gray-600 hover:text-purple-700 block text-base"
+                                  className="text-gray-600 hover:text-[#e63946] block text-base"
                                 >
                                   {link.text}
                                 </Link>
