@@ -11,6 +11,7 @@ type Booking = {
   boothId: string;
   extras: string[];
   status: 'pending' | 'approved' | 'cancelled';
+  paymentStatus: 'not_applicable' | 'pending' | 'paid';
 };
 
 const initialBookings: Booking[] = [
@@ -22,6 +23,7 @@ const initialBookings: Booking[] = [
     boothId: 'B-12',
     extras: ['Electricity'],
     status: 'pending',
+    paymentStatus: 'not_applicable',
   },
   {
     id: 'bk002',
@@ -31,6 +33,7 @@ const initialBookings: Booking[] = [
     boothId: 'F-03',
     extras: ['Water Hookup', 'Tables'],
     status: 'approved',
+    paymentStatus: 'pending',
   },
   {
     id: 'bk003',
@@ -40,6 +43,7 @@ const initialBookings: Booking[] = [
     boothId: 'C-07',
     extras: [],
     status: 'cancelled',
+    paymentStatus: 'not_applicable',
   },
 ];
 
@@ -54,7 +58,22 @@ export const ManageBookings = () => {
 
   const handleStatusChange = (id: string, status: Booking['status']) => {
     setBookings((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, status } : b))
+      prev.map((b) =>
+        b.id === id ? { ...b, status, paymentStatus: status === 'approved' ? 'not_applicable' : b.paymentStatus } : b
+      )
+    );
+  };
+
+  const handleSendPaymentLink = (id: string) => {
+    alert('Payment link sent to vendor email!');
+    setBookings((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, paymentStatus: 'pending' } : b))
+    );
+  };
+
+  const handleMarkPaid = (id: string) => {
+    setBookings((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, paymentStatus: 'paid' } : b))
     );
   };
 
@@ -108,7 +127,7 @@ export const ManageBookings = () => {
                   ➕ Extras: {booking.extras.join(', ')}
                 </p>
               )}
-              <p className="text-sm mb-4">
+              <p className="text-sm mb-1">
                 Status:{' '}
                 <span
                   className={`font-semibold ${
@@ -122,8 +141,20 @@ export const ManageBookings = () => {
                   {booking.status}
                 </span>
               </p>
+              <p className="text-sm mb-4">
+                Payment Status:{' '}
+                <span className={`font-semibold ${
+                  booking.paymentStatus === 'paid'
+                    ? 'text-green-600'
+                    : booking.paymentStatus === 'pending'
+                    ? 'text-yellow-600'
+                    : 'text-gray-500'
+                }`}>
+                  {booking.paymentStatus.replace('_', ' ')}
+                </span>
+              </p>
 
-              <div className="flex space-x-2">
+              <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => handleStatusChange(booking.id, 'approved')}
                   disabled={booking.status === 'approved'}
@@ -138,6 +169,22 @@ export const ManageBookings = () => {
                 >
                   Cancel
                 </button>
+                {booking.status === 'approved' && booking.paymentStatus === 'not_applicable' && (
+                  <button
+                    onClick={() => handleSendPaymentLink(booking.id)}
+                    className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
+                  >
+                    Send Payment Link
+                  </button>
+                )}
+                {booking.paymentStatus === 'pending' && (
+                  <button
+                    onClick={() => handleMarkPaid(booking.id)}
+                    className="bg-indigo-500 text-white px-4 py-1 rounded hover:bg-indigo-600"
+                  >
+                    Mark as Paid
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}
