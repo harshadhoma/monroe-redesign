@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Header } from '../Navigation/HeaderComponent';
 
-const bookingSteps = ['Exhibitor Info', 'Extras', 'Review & Submit', 'Payment Confirmation'];
+const bookingSteps = ['Exhibitor Info', 'Extras', 'Review & Submit'];
 const isAfterApril18 = new Date() > new Date('2025-04-18');
 
 export const VendorBookingForm = () => {
@@ -80,13 +80,12 @@ export const VendorBookingForm = () => {
       if (!formData.email.includes('@')) errs.email = 'Invalid email';
       if (!formData.address) errs.address = 'Required';
     }
-    if (step === 2) {
-      if (!formData.paymentMethod) errs.paymentMethod = 'Required';
-      if (!formData.agree) errs.agree = 'You must agree to the terms';
-    }
+  
+    // ✅ DO NOT validate anything at step 2
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
+  
 
   const nextStep = () => {
     if (validateStep()) {
@@ -98,11 +97,12 @@ export const VendorBookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateStep()) {
-      console.log('Submitted:', { formData, selectedBooths, eventId });
+    if (step === 2) {
       setSubmitted(true);
+      console.log('✅ Submitted for approval:', { formData, selectedBooths, eventId });
     }
   };
+  
 
   // Back button for step 0: return to Vendor Map
   const handleBackToMap = () => {
@@ -115,9 +115,10 @@ export const VendorBookingForm = () => {
         <Header />
         <div className="max-w-xl mx-auto text-center py-20 px-6">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-3xl font-bold text-purple-800 mb-3">🎉 Application Received!</h2>
-            <p className="text-gray-700 mb-2">Thank you for your reservation.</p>
-            <p className="text-gray-600 mb-4">A confirmation email has been sent to {formData.email}.</p>
+          <h2 className="text-3xl font-bold text-purple-800 mb-3">✅ Request Submitted for Approval</h2>
+<p className="text-gray-700 mb-2">Thank you for your application! Our team will review your request.</p>
+<p className="text-gray-600 mb-4">You’ll receive a confirmation email once it's approved, along with a payment link.</p>
+
             <a href="/" className="mt-6 inline-block text-purple-600 font-semibold underline text-sm">
               Return to Homepage
             </a>
@@ -134,7 +135,7 @@ export const VendorBookingForm = () => {
         {/* Top Center Step Label */}
         <div className="text-center mb-6">
           <h2 className="text-xl font-semibold text-purple-800">
-            Step {step + 2}/5: {bookingSteps[step]}
+            Step {step + 2}/4: {bookingSteps[step]}
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-6">
@@ -211,124 +212,77 @@ export const VendorBookingForm = () => {
             </>
           )}
 
-          {step === 2 && (
-            <>
-              <Select
-                label="Payment Method"
-                name="paymentMethod"
-                value={formData.paymentMethod}
-                onChange={handleChange}
-                options={['Check', 'Online Invoice']}
-                error={errors.paymentMethod}
-              />
-              <Checkbox
-                label="I agree to the terms and conditions"
-                name="agree"
-                checked={formData.agree}
-                onChange={handleChange}
-                error={errors.agree}
-              />
-              <div className="mt-2">
-                <label className="block font-medium text-sm mb-1">
-                  Upload Payment Proof (if applicable)
-                </label>
-                <input
-                  type="file"
-                  onChange={handleFileChange}
-                  className="w-full border px-3 py-2 rounded-md text-sm"
-                />
-              </div>
-            </>
-          )}
+{step === 2 && (
+  <div className="bg-purple-50 p-6 rounded-lg">
+    <h3 className="text-2xl font-bold text-purple-800 mb-4">Review & Submit</h3>
+    <div className="space-y-4 text-sm">
+      <p><strong>Business Name:</strong> {formData.businessName}</p>
+      <p><strong>Email:</strong> {formData.email}</p>
+      <p><strong>Contact Phone:</strong> {formData.contactPhone}</p>
+      <p><strong>Address:</strong> {formData.address}</p>
+      <p><strong>Exhibit Description:</strong> {formData.exhibitDescription}</p>
+      <p><strong>Selected Booths:</strong></p>
+      <ul className="list-disc pl-5">
+        {selectedBooths.map((b) => {
+          const prices = boothPrices[b.type][b.size];
+          const price = isAfterApril18 ? prices.after : prices.before;
+          return (
+            <li key={b.id}>
+              Booth {b.id} ({b.type}, {b.size}) — ${price}
+            </li>
+          );
+        })}
+      </ul>
+      <p><strong>Tables:</strong> {formData.tables}</p>
+      <p><strong>Camping 30A:</strong> {formData.camping30}</p>
+      <p><strong>Camping 50A:</strong> {formData.camping50}</p>
+      <p><strong>Electricity:</strong> {formData.needElectricity ? 'Yes' : 'No'}</p>
+      {/* <p><strong>Payment Method:</strong> {formData.paymentMethod || 'Not selected'}</p>
+      <p><strong>Agreed to Terms:</strong> {formData.agree ? 'Yes' : 'No'}</p> */}
+      <p className="mt-4 font-semibold text-purple-800 text-lg">💰 Total: ${totalCost}</p>
+    </div>
+  </div>
+)}
 
-          {step === 3 && (
-            <div className="bg-purple-50 p-6 rounded-lg">
-              <h3 className="text-2xl font-bold text-purple-800 mb-4">Review Your Application</h3>
-              <div className="space-y-4 text-sm">
-                <p>
-                  <strong>Business Name:</strong> {formData.businessName}
-                </p>
-                <p>
-                  <strong>Email:</strong> {formData.email}
-                </p>
-                <p>
-                  <strong>Contact Phone:</strong> {formData.contactPhone}
-                </p>
-                <p>
-                  <strong>Address:</strong> {formData.address}
-                </p>
-                <p>
-                  <strong>Exhibit Description:</strong> {formData.exhibitDescription}
-                </p>
-                <p>
-                  <strong>Selected Booths:</strong>
-                </p>
-                <ul className="list-disc pl-5">
-                  {selectedBooths.map((b) => {
-                    const prices = boothPrices[b.type][b.size];
-                    const price = isAfterApril18 ? prices.after : prices.before;
-                    return (
-                      <li key={b.id}>
-                        Booth {b.id} ({b.type}, {b.size}) — ${price}
-                      </li>
-                    );
-                  })}
-                </ul>
-                <p>
-                  <strong>Tables ($5 each):</strong> {formData.tables}
-                </p>
-                <p>
-                  <strong>Camping 30A ($30/night):</strong> {formData.camping30}
-                </p>
-                <p>
-                  <strong>Camping 50A ($30/night):</strong> {formData.camping50}
-                </p>
-                <p>
-                  <strong>Electricity Needed ($20 per booth):</strong> {formData.needElectricity ? 'Yes' : 'No'}
-                </p>
-                <p className="mt-4 font-semibold text-purple-800 text-lg">
-                  💰 Total: ${totalCost}
-                </p>
-              </div>
-            </div>
-          )}
 
-          <div className="flex justify-between pt-4">
-            {step === 0 ? (
-              <button
-                type="button"
-                onClick={handleBackToMap}
-                className="text-purple-600 hover:underline text-sm"
-              >
-                ← Back to Vendor Map
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={prevStep}
-                className="text-purple-600 hover:underline text-sm"
-              >
-                ← Back
-              </button>
-            )}
-            {step < bookingSteps.length - 1 ? (
-              <button
-                type="button"
-                onClick={nextStep}
-                className="bg-yellow-400 text-purple-900 font-bold px-6 py-2 rounded-full hover:bg-yellow-300 text-sm"
-              >
-                Next →
-              </button>
-            ) : (
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.05 }}
-                className="bg-yellow-400 text-purple-900 font-bold px-6 py-2 rounded-full hover:bg-yellow-300 text-sm"
-              >
-                Submit
-              </motion.button>
-            )}
-          </div>
+<div className="flex justify-between pt-4">
+  {step === 0 ? (
+    <button
+      type="button"
+      onClick={handleBackToMap}
+      className="text-purple-600 hover:underline text-sm"
+    >
+      ← Back to Vendor Map
+    </button>
+  ) : (
+    <button
+      type="button"
+      onClick={prevStep}
+      className="text-purple-600 hover:underline text-sm"
+    >
+      ← Back
+    </button>
+  )}
+
+  {step < 2 ? (
+    <button
+      type="button"
+      onClick={nextStep}
+      className="bg-yellow-400 text-purple-900 font-bold px-6 py-2 rounded-full hover:bg-yellow-300 text-sm"
+    >
+      Next →
+    </button>
+  ) : (
+    <motion.button
+      type="submit"
+      whileHover={{ scale: 1.05 }}
+      className="bg-yellow-400 text-purple-900 font-bold px-6 py-2 rounded-full hover:bg-yellow-300 text-sm"
+    >
+      Submit for Approval →
+    </motion.button>
+  )}
+</div>
+
         </form>
       </div>
     </div>
